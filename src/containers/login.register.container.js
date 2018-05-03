@@ -1,6 +1,6 @@
 import React, { Component} from 'react'
-import LoginRegister from '../components/login.register/login.register'
 import axios from 'axios'
+import LoginRegister from '../components/login.register/login.register'
 class LoginRegisterContainer extends Component {
     constructor(props){
         super(props)
@@ -52,7 +52,6 @@ class LoginRegisterContainer extends Component {
         } else {
             this.setState({notificationRegister: ''})
         }
-        
         let res = null
         try {
             res = await axios.post('http://localhost:8080/user/register',{
@@ -69,10 +68,37 @@ class LoginRegisterContainer extends Component {
             if(err.response.data.msg === "Email already exist")
                  this.setState({notificationRegister: 'Email already exist'})
             else
-            this.setState({notificationRegister: 'Register unsuccessful'})
+                this.setState({notificationRegister: 'Register unsuccessful'})
             return
         }
         this.setState({notificationRegister: 'Register success'})
+    }
+
+    loginSubmit = async () => {
+        if(!this.isvalidEmail(this.state.emailLogin)) {
+            this.setState({notificationLogin: "Email invalid"})
+            return
+        } else {
+            this.setState({notificationLogin: ''})
+        }
+
+        let res = null
+        try {
+            res = await axios.post('http://localhost:8080/user/login',{
+                email: this.state.emailLogin, 
+                password: this.state.passwordLogin,
+            })
+        }
+        catch(err) {
+            if(err.response.data.msg === "no_registration_confirmation")
+                 this.setState({notificationLogin: 'The account has not been activated'})
+            else {
+                this.setState({notificationLogin: 'Email or password invalid'})
+                
+            }
+            return
+        }
+        this.props.history.push('/')
 
     }
     render(){
@@ -91,6 +117,7 @@ class LoginRegisterContainer extends Component {
                 setPassword={(value) => this.setState({password: value})} 
                 setConfirm={(value) => this.setState({confirm: value})}
                 registerSubmit={() => this.registerSubmit()}
+                loginSubmit={() => this.loginSubmit()}
                 />
             </div>
         )

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 const ContentLoginRegister = ({ setEmailogin, setPasswordlogin, setEmail,
     setFirstname, setLastname, setAddress, setPhone, setPassword, setConfirm,
-    notificationRegister, notificationLogin, registerSubmit }) => (
+    notificationRegister, notificationLogin, registerSubmit, loginSubmit }) => (
         <section id="form">
             <div className="container">
                 <div className="row">
@@ -22,7 +22,10 @@ const ContentLoginRegister = ({ setEmailogin, setPasswordlogin, setEmail,
                                     <input type="checkbox" className="checkbox" />
                                     Keep me signed in
 							</span>
-                                <button type="submit" className="btn btn-default">Login</button>
+                                <button 
+                                className="btn btn-default"
+                                onClick={() => loginSubmit()}
+                                >Login</button>
 
                         </div>
                     </div>

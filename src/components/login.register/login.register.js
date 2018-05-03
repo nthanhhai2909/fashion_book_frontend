@@ -8,7 +8,7 @@ import FooterBottom from '../footer/footer.bottom'
 import ContentLoginRegister from './content.login.register'
 const Home = ({ setEmailogin, setPasswordlogin, setEmail,
     setFirstname, setLastname, setAddress, setPhone, setPassword, setConfirm,
-    notificationRegister, notificationLogin, registerSubmit }) => (
+    notificationRegister, notificationLogin, registerSubmit, loginSubmit }) => (
         <div>
             <header id="header">
                 <HeaderTop />
@@ -28,6 +28,7 @@ const Home = ({ setEmailogin, setPasswordlogin, setEmail,
                 notificationRegister={notificationRegister}
                 notificationLogin={notificationLogin}
                 registerSubmit={()=> registerSubmit()}
+                loginSubmit={() => loginSubmit()}
             />
             <footer id="footer">
                 <FooterTop />
