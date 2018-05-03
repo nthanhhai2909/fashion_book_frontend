@@ -1,6 +1,10 @@
 import React, { Component} from 'react'
 import axios from 'axios'
+import {connect} from 'react-redux'
+import { bindActionCreators } from 'redux'
 import LoginRegister from '../components/login.register/login.register'
+import * as LoginActions from '../actions/login.action'
+
 class LoginRegisterContainer extends Component {
     constructor(props){
         super(props)
@@ -15,8 +19,12 @@ class LoginRegisterContainer extends Component {
             password: '',
             confirm: '',
             notificationRegister: '',
-            notificationLogin: ''
+            notificationLogin: '',
+            
         }
+    }
+    componentWillMount() {
+        this.props.actions.auth()
     }
     isvalidPassword = (password) => {
         if(password.length < 6)
@@ -79,9 +87,9 @@ class LoginRegisterContainer extends Component {
         } else {
             this.setState({notificationLogin: ''})
         }
-
+        let res 
         try {
-                await axios.post('http://localhost:8080/user/login',{
+                res = await axios.post('http://localhost:8080/user/login',{
                 email: this.state.emailLogin, 
                 password: this.state.passwordLogin,
             })
@@ -95,6 +103,7 @@ class LoginRegisterContainer extends Component {
             }
             return
         }
+        this.props.actions.loginSuccess(this.state.emailLogin, res.data.token)
         this.props.history.push('/')
 
     }
@@ -115,10 +124,24 @@ class LoginRegisterContainer extends Component {
                 setConfirm={(value) => this.setState({confirm: value})}
                 registerSubmit={() => this.registerSubmit()}
                 loginSubmit={() => this.loginSubmit()}
+                islogin={this.props.islogin}
                 />
             </div>
         )
         
     }
 }
-export default LoginRegisterContainer
+
+const mapStateToProps = state => ({
+    islogin: state.loginReducers.login.islogin
+})
+
+const mapDispatchToProps = dispatch =>{
+    return ({
+        actions: bindActionCreators(LoginActions, dispatch)
+    })
+}
+export default connect (
+    mapStateToProps,
+    mapDispatchToProps,
+)(LoginRegisterContainer)

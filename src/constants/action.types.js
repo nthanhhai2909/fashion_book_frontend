@@ -1,0 +1,5 @@
+export const loginTypes = {
+    SET_EMAIL_LOGIN: 'SET_EMAIL_LOGIN',
+    LOGIN_SUCCESS: 'LOGIN_SUCCESS',
+    LOGIN_FAIL: 'LOGIN_FAIL'
+}

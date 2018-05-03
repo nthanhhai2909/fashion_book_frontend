@@ -15,11 +15,9 @@ class VerifyRegisterAccountContainer extends Component {
         }
         catch(err) {
             this.setState({isconfirm: false})
-            console.log(err)
         }
     }
     render() {
-        console.log(this.state.isconfirm)
         if(this.state.isconfirm) {
             return(
                 <VerifyRegisterAccount/>

@@ -8,11 +8,12 @@ import FooterBottom from '../footer/footer.bottom'
 import ContentLoginRegister from './content.login.register'
 const Home = ({ setEmailogin, setPasswordlogin, setEmail,
     setFirstname, setLastname, setAddress, setPhone, setPassword, setConfirm,
-    notificationRegister, notificationLogin, registerSubmit, loginSubmit }) => (
+    notificationRegister, notificationLogin, registerSubmit, loginSubmit, islogin }) => (
         <div>
             <header id="header">
                 <HeaderTop />
-                <HeaderMiddle />
+                <HeaderMiddle
+                islogin={islogin} />
                 <HeaderBottom />
             </header>
             <ContentLoginRegister
