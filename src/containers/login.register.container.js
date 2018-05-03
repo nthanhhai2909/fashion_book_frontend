@@ -52,9 +52,8 @@ class LoginRegisterContainer extends Component {
         } else {
             this.setState({notificationRegister: ''})
         }
-        let res = null
         try {
-            res = await axios.post('http://localhost:8080/user/register',{
+                await axios.post('http://localhost:8080/user/register',{
                 email: this.state.email, 
                 password: this.state.password,
                 firstName: this.state.firstname,
@@ -64,7 +63,6 @@ class LoginRegisterContainer extends Component {
             })
         }
         catch(err) {
-            console.log(err.response)
             if(err.response.data.msg === "Email already exist")
                  this.setState({notificationRegister: 'Email already exist'})
             else
@@ -82,9 +80,8 @@ class LoginRegisterContainer extends Component {
             this.setState({notificationLogin: ''})
         }
 
-        let res = null
         try {
-            res = await axios.post('http://localhost:8080/user/login',{
+                await axios.post('http://localhost:8080/user/login',{
                 email: this.state.emailLogin, 
                 password: this.state.passwordLogin,
             })
