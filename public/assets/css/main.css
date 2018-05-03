@@ -1440,7 +1440,24 @@ h2.title {
 }
 
 .signup-form {
+  
+}
 
+
+
+.signup-form .noti {
+  color: steelblue;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+.login-form .noti {
+  color: steelblue;
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
 }
 
 .login-form h2, .signup-form h2 {
@@ -1452,7 +1469,7 @@ h2.title {
 }
 
 
-.login-form form input, .signup-form form input {
+.login-form input, .signup-form  input {
   background: #F0F0E9;
   border: medium none;
   color: #696763;
@@ -1467,22 +1484,22 @@ h2.title {
   width: 100%;
 }
 
-.login-form form span{
+.login-form  span{
   line-height: 25px;
 }
 
-.login-form form span input {
+.login-form  span input {
   width: 15px;
   float: left;
   height: 15px;
   margin-right: 5px;
 }
 
-.login-form form button {
+.login-form  button {
   margin-top: 23px;
 }
 
-.login-form form button, .signup-form form button {
+.login-form  button, .signup-form  button {
   background: #FE980F;
   border: medium none;
   border-radius: 0;
@@ -1515,7 +1532,7 @@ h2.title {
 	font-size: 16px;
 	height: 50px;
 	line-height: 50px;
-	margin-top: 75px;
+	margin-top: 150px;
 	text-align: center;
 	width: 50px;
 }
