@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import { Link } from 'react-router-dom'
 const HeaderMiddle = () => (
     <div className="header-middle">
     <div className="container">
@@ -39,7 +39,7 @@ const HeaderMiddle = () => (
                             <li><a href="#"><i className="fa fa-star"></i> Wishlist</a></li>
                             <li><a href="checkout.html"><i className="fa fa-crosshairs"></i> Checkout</a></li>
                             <li><a href="cart.html"><i className="fa fa-shopping-cart"></i> Cart</a></li>
-                            <li><a href="login.html"><i className="fa fa-lock"></i> Login</a></li>
+                            <li><Link to="/login_register"><i className="fa fa-lock"></i> Login</Link></li>
                         </ul>
                     </div>
                 </div>
