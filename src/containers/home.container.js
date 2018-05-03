@@ -14,6 +14,7 @@ class HomeContainer extends React.Component {
             <div>
                 <Home
                     islogin={this.props.islogin}
+                    logout={() => this.props.actions.logout()}
                 />
             </div>
         )

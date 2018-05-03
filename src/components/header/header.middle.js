@@ -7,7 +7,9 @@ class HeaderMiddle extends Component {
     handlelogin = () => {
         if(this.props.islogin) {
             return (
-                <li><Link to="/login_register"><i className="fa fa-lock"></i>Logout</Link></li>
+                <li
+                onClick={this.props.logout()}
+                ><Link to="/"><i className="fa fa-lock"></i>Logout</Link></li>
             )
         }
         else {
@@ -17,7 +19,6 @@ class HeaderMiddle extends Component {
         }
     } 
     render() {
-        console.log('asdasd ' + this.props.islogin)
         return (
             <div className="header-middle">
                 <div className="container">
@@ -57,8 +58,7 @@ class HeaderMiddle extends Component {
                                     <li><a href="#"><i className="fa fa-star"></i> Wishlist</a></li>
                                     <li><a href="checkout.html"><i className="fa fa-crosshairs"></i> Checkout</a></li>
                                     <li><a href="cart.html"><i className="fa fa-shopping-cart"></i> Cart</a></li>
-                                    {this.handlelogin()}
-                                    
+                                    {this.handlelogin()}        
                                 </ul>
                             </div>
                         </div>

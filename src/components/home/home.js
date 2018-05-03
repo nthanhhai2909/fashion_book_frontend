@@ -6,12 +6,14 @@ import ContentHome from './content.home'
 import FooterTop from '../footer/footer.top'
 import FooterMiddle from '../footer/footer.middle'
 import FooterBottom from '../footer/footer.bottom'
-const Home = ({islogin}) => (
+const Home = ({islogin, logout}) => (
     <div>
         <header id="header">
             <HeaderTop />
             <HeaderMiddle 
-            islogin={islogin}/>
+            islogin={islogin}
+            logout={() => logout}
+            />
             <HeaderBottom />
         </header>
         <ContentHome />

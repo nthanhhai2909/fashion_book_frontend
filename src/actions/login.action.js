@@ -7,7 +7,8 @@ export const loginSuccess = (email, token) => (dispatch, getState) => {
     dispatch(setEmail(email))
 }
 
-export const auth =  () => async (dispatch, getState)  => {
+export const auth = () => async (dispatch, getState)  => {
+    
     let email = storeConfig.getEmail()
     let token = storeConfig.getToken()
     let res
@@ -19,8 +20,15 @@ export const auth =  () => async (dispatch, getState)  => {
     }
     catch (err) {
         dispatch(setLoginFail())
+        return
     }
     dispatch(setLoginSuccess())
+}
+
+export const logout = () => (dispatch, getState) => {
+    storeConfig.removeEmail()
+    storeConfig.removeToken()
+    dispatch(setLoginFail())
 }
 export const setEmail = (email) => ({
     type: loginTypes.SET_EMAIL_LOGIN,

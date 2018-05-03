@@ -125,6 +125,7 @@ class LoginRegisterContainer extends Component {
                 registerSubmit={() => this.registerSubmit()}
                 loginSubmit={() => this.loginSubmit()}
                 islogin={this.props.islogin}
+                logout={() => this.props.actions.logout()}
                 />
             </div>
         )
