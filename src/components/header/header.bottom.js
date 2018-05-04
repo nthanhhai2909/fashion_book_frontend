@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import { Link} from 'react-router-dom'
 const HeaderBottom = () => (
     <div className="header-bottom">
         <div className="container">
@@ -47,11 +47,10 @@ const HeaderBottom = () => (
                             Sort by <span className="caret"></span>
                         </button>
                         <ul className="dropdown-menu" role="menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li className="divider"></li>
-                            <li><a href="#">Separated link</a></li>
+                            <li><Link to="/">Action</Link></li>
+                            <li><Link to="/">Action</Link></li>
+                            <li><Link to="/">Action</Link></li>
+                            <li><Link to="/">Action</Link></li>
                         </ul>
                     </div>
                 </div>
