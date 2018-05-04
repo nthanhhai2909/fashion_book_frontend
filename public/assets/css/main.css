@@ -1442,7 +1442,11 @@ h2.title {
 .signup-form {
   
 }
-
+.forgotpass span{
+  font-size: 20px;
+  color: royalblue;
+  text-transform: uppercase;
+}
 .forgotpass input{
   background: #F0F0E9;
   border: medium none;
@@ -1457,6 +1461,10 @@ h2.title {
   padding-left: 10px;
   margin: auto;
   min-width: 400px;
+}
+
+.forgotpass button {
+  min-width: 20px;
 }
 
 

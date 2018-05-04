@@ -3,8 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import axios from 'axios'
 import Home from '../components/home/home'
-import storeConfig from '../config/storage.config'
-import * as LoginActions from '../actions/login.action'
+import * as userActions from '../actions/user.action'
 class HomeContainer extends React.Component {
     componentWillMount() {
         this.props.actions.auth()
@@ -22,12 +21,12 @@ class HomeContainer extends React.Component {
     }
 }
 const mapStateToProps = state => ({
-    islogin: state.loginReducers.login.islogin
+    islogin: state.userReducers.login.islogin
 })
 
 const mapDispatchToProps = dispatch =>{
     return ({
-        actions: bindActionCreators(LoginActions, dispatch)
+        actions: bindActionCreators(userActions, dispatch)
     })
 }
 export default connect(

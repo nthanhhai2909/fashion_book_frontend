@@ -3,7 +3,7 @@ import axios from 'axios'
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
 import LoginRegister from '../components/login.register/login.register'
-import * as LoginActions from '../actions/login.action'
+import * as userActions from '../actions/user.action'
 
 class LoginRegisterContainer extends Component {
     constructor(props){
@@ -134,12 +134,12 @@ class LoginRegisterContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-    islogin: state.loginReducers.login.islogin
+    islogin: state.userReducers.login.islogin
 })
 
 const mapDispatchToProps = dispatch =>{
     return ({
-        actions: bindActionCreators(LoginActions, dispatch)
+        actions: bindActionCreators(userActions, dispatch)
     })
 }
 export default connect (
