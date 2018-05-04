@@ -9,13 +9,13 @@ const EnterNewPassword = ({setNewPassword,setConfirm, submitEnterNewPassword  })
             <h1><b>ENTER NEW PASSWORD
 			</b></h1>
             <input
-                type="text"
+                type="password"
                 placeholder="New Password"
                 onChange={(e) => setNewPassword(e.target.value)}
             />
             <br/>
             <input
-                type="text"
+                type="password"
                 placeholder="Confirm"
                 onChange={(e) => setConfirm(e.target.value)}
             />
