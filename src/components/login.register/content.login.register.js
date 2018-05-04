@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import { Link } from 'react-router-dom'
 const ContentLoginRegister = ({ setEmailogin, setPasswordlogin, setEmail,
     setFirstname, setLastname, setAddress, setPhone, setPassword, setConfirm,
     notificationRegister, notificationLogin, registerSubmit, loginSubmit }) => (
@@ -10,22 +10,24 @@ const ContentLoginRegister = ({ setEmailogin, setPasswordlogin, setEmail,
                         <div className="login-form">
                             <h2>Login to your account</h2>
                             <div className="noti">{notificationLogin}</div>
-                                <input type="email"
-                                    placeholder="Email address"
-                                    onChange={(e) => { setEmailogin(e.target.value) }}
-                                />
-                                <input type="password"
-                                    placeholder="Password"
-                                    onChange={(e) => { setPasswordlogin(e.target.value) }}
-                                />
-                                <span>
-                                    <input type="checkbox" className="checkbox" />
-                                    Keep me signed in
-							</span>
-                                <button 
+                            <input type="email"
+                                placeholder="Email address"
+                                onChange={(e) => { setEmailogin(e.target.value) }}
+                            />
+                            <input type="password"
+                                placeholder="Password"
+                                onChange={(e) => { setPasswordlogin(e.target.value) }}
+                            />
+                            <Link to='/forgotpass'>Forgot password</Link>
+                            <br/>
+                            <span>
+                                <input type="checkbox" className="checkbox" />
+                                Keep me signed in
+                            </span>                          
+                            <button
                                 className="btn btn-default"
                                 onClick={() => loginSubmit()}
-                                >Login</button>
+                            >Login</button>
 
                         </div>
                     </div>
