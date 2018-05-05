@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ProductItem from './product.item';
 
-const ContentHome = ({ category, publisher }) => (
+const ContentHome = ({ category, publisher, book }) => (
     <section>
         <div className="container">
             <div className="row">
@@ -12,7 +12,7 @@ const ContentHome = ({ category, publisher }) => (
                             {
                                 category.map((element, index) => {
                                     return (
-                                        <div key={index}className="panel panel-default">
+                                        <div key={index} className="panel panel-default">
                                             <div className="panel-heading">
                                                 <h4 className="panel-title"><a key={index}>{element.name}</a></h4>
                                             </div>
@@ -26,11 +26,11 @@ const ContentHome = ({ category, publisher }) => (
                             <h2>Brands</h2>
                             <div className="brands-name">
                                 <ul className="nav nav-pills nav-stacked">
-                                {publisher.map((element, index) => {
-                                    return (
-                                        <li><a href="#"> <span class="pull-right"></span>{element.name}</a></li>
-                                    )
-                                })} 
+                                    {publisher.map((element, index) => {
+                                        return (
+                                            <li><a href="#"> <span class="pull-right"></span>{element.name}</a></li>
+                                        )
+                                    })}
                                 </ul>
                             </div>
                         </div>
@@ -55,31 +55,16 @@ const ContentHome = ({ category, publisher }) => (
                 <div className="col-sm-9 padding-right">
                     <div className="features_items">
                         <h2 className="title text-center">Features Items</h2>
-                        <ProductItem
-                            urlImg={"assets/images/home/product1.jpg"}
-                            price={"$56"}
-                            describe={"Easy Polo Black Edition"}
-                        />
-                        <ProductItem
-                            urlImg={"assets/images/home/product1.jpg"}
-                            price={"$56"}
-                            describe={"Easy Polo Black Edition"}
-                        />
-                        <ProductItem
-                            urlImg={"assets/images/home/product1.jpg"}
-                            price={"$56"}
-                            describe={"Easy Polo Black Edition"}
-                        />
-                        <ProductItem
-                            urlImg={"assets/images/home/product1.jpg"}
-                            price={"$56"}
-                            describe={"Easy Polo Black Edition"}
-                        />
-                        <ProductItem
-                            urlImg={"assets/images/home/product1.jpg"}
-                            price={"$56"}
-                            describe={"Easy Polo Black Edition"}
-                        />
+                        {book.map((element, index) => {
+                            return (
+                                <ProductItem
+                                    urlImg={element.img}
+                                    price={element.price}
+                                    describe={element.describe}
+                                    id={element._id}
+                                />
+                            )
+                        })}
                     </div>
                 </div>
             </div>

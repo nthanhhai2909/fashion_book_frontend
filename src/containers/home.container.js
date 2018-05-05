@@ -6,10 +6,14 @@ import Home from '../components/home/home'
 import * as userActions from '../actions/user.action'
 import * as homeActions from '../actions/home.action'
 class HomeContainer extends React.Component {
+    constructor(props) {
+        super(props)
+    }
     componentWillMount() {
         this.props.actions.auth()
         this.props.homeActions.getCategory()
         this.props.homeActions.getPublisher()
+        this.props.homeActions.getBook()
     }
     render() {
         return (
@@ -19,6 +23,7 @@ class HomeContainer extends React.Component {
                     logout={() => this.props.actions.logout()}
                     category={this.props.category}
                     publisher={this.props.publisher}
+                    book={this.props.book}
                 />
             </div>
         )
@@ -28,7 +33,8 @@ class HomeContainer extends React.Component {
 const mapStateToProps = state => ({
     islogin: state.userReducers.login.islogin,
     category: state.homeReducers.category.data,
-    publisher: state.homeReducers.publisher.data
+    publisher: state.homeReducers.publisher.data,
+    book: state.homeReducers.book.data
 })
 
 const mapDispatchToProps = dispatch =>{

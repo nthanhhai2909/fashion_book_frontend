@@ -6,7 +6,7 @@ import ContentHome from './content.home'
 import FooterTop from '../footer/footer.top'
 import FooterMiddle from '../footer/footer.middle'
 import FooterBottom from '../footer/footer.bottom'
-const Home = ({ islogin, logout, category, publisher }) => (
+const Home = ({ islogin, logout, category, publisher, book }) => (
     <div>
         <header id="header">
             <HeaderTop />
@@ -19,6 +19,7 @@ const Home = ({ islogin, logout, category, publisher }) => (
         <ContentHome
             category={category}
             publisher={publisher}
+            book={book}
         />
         <footer id="footer">
             <FooterTop />
