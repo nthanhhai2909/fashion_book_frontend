@@ -14,7 +14,7 @@ class HeaderMiddle extends Component {
         }
         else {
             return (
-                <li><Link to="/login_register"><i className="fa fa-lock"></i>Login</Link></li>
+                <li onClick={this.props.logout()}><Link to="/login_register"><i className="fa fa-lock"></i>Login</Link></li>
             )
         }
     } 
