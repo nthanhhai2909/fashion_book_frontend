@@ -14,7 +14,7 @@ export const userTypes = {
 }
 
 export const homeTypes = {
-    SET_CATEGORY_BOOK: 'SET_ITEM_BOOK',
+    SET_CATEGORY_BOOK: 'SET_CATEGORY_BOOK',
 
     SET_PUBLISHSER: "SET_PUBLISHSER",
 }
