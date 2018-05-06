@@ -12,7 +12,7 @@ const App = () => (
       <Route exact path='/login_register' component={LoginRegisterContainer} />
       <Route exact path='/confirm/:token' component={VerifyRegisterAccountContainer} />
       <Route exact path='/forgotpass/' component={ForgotPasswordContainer} />
-      <Route exact path='/product/:name' component={ProductDetailContainer} />
+      <Route exact path='/product/:id' component={ProductDetailContainer} />
     </Switch>
   </Router>
 )

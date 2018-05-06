@@ -22,3 +22,8 @@ export const homeTypes = {
     SET_BOOK: 'SET_BOOK',
     SET_TOTAL_PAGE: 'SET_TOTAL_PAGE'
 }
+
+export const productTypes = {
+    SET_PRODUCT_DETAIL: 'SET_PRODUCT_DETAIL',
+    SET_NAME_CATEGORY: 'SET_NAME_CATEGORY'
+}

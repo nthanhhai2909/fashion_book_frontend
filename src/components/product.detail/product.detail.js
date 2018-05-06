@@ -21,6 +21,8 @@ class ProductDetail extends Component {
                 <ContentProductDetail
                     category={this.props.category}
                     publisher={this.props.publisher}
+                    mproductDetail={this.props.mproductDetail}      
+                    nameCategory={this.props.nameCategory}                                  
                 />
                 <footer id="footer">
                     <FooterTop />

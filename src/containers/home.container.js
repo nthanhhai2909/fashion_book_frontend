@@ -16,6 +16,7 @@ class HomeContainer extends React.Component {
         this.props.homeActions.getBook()
     }
     render() {
+        
         return (
             <div>
                 <Home

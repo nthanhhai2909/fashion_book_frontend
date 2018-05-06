@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-const ContentProductDetail = ({ category, publisher }) => (
+const ContentProductDetail = ({ category, publisher, mproductDetail, nameCategory}) => (
     <section>
         <div className="container">
             <div className="row">
@@ -54,27 +54,26 @@ const ContentProductDetail = ({ category, publisher }) => (
                     <div className="product-details">
                         <div className="col-sm-5">
                             <div className="view-product">
-                                <img src="/assets/images/product-details/1.jpg" alt="" />
-                                <h3>ZOOM</h3>
+                                <img src={mproductDetail.img} alt="" />
                             </div>
                             <div id="similar-product" className="carousel slide" data-ride="carousel">
 
 
                                 <div className="carousel-inner">
                                     <div className="item active">
-                                        <a href=""><img src="/assets/images/product-details/similar1.jpg" alt="" />></a>
-                                        <a href=""><img src="/assets/images/product-details/similar2.jpg" alt="" />></a>
-                                        <a href=""><img src="images/product-details/similar3.jpg" alt="" />></a>
+                                        <a href=""><img src="/assets/images/product-details/similar1.jpg" alt="" /></a>
+                                        <a href=""><img src="/assets/images/product-details/similar2.jpg" alt="" /></a>
+                                        <a href=""><img src="images/product-details/similar3.jpg" alt="" /></a>
                                     </div>
                                     <div className="item">
-                                        <a href=""><img src="/assets/images/product-details/similar1.jpg" alt="" />></a>
-                                        <a href=""><img src="/assets/images/product-details/similar2.jpg" alt="" />></a>
-                                        <a href=""><img src="/assets/images/product-details/similar3.jpg" alt="" />></a>
+                                        <a href=""><img src="/assets/images/product-details/similar1.jpg" alt="" /></a>
+                                        <a href=""><img src="/assets/images/product-details/similar2.jpg" alt="" /></a>
+                                        <a href=""><img src="/assets/images/product-details/similar3.jpg" alt="" /></a>
                                     </div>
                                     <div className="item">
-                                        <a href=""><img src="images/product-details/similar1.jpg" alt="" />></a>
-                                        <a href=""><img src="images/product-details/similar2.jpg" alt="" />></a>
-                                        <a href=""><img src="images/product-details/similar3.jpg" alt="" />></a>
+                                        <a href=""><img src="images/product-details/similar1.jpg" alt="" /></a>
+                                        <a href=""><img src="images/product-details/similar2.jpg" alt="" /></a>
+                                        <a href=""><img src="images/product-details/similar3.jpg" alt="" /></a>
                                     </div>
 
                                 </div>
@@ -92,21 +91,21 @@ const ContentProductDetail = ({ category, publisher }) => (
                         <div className="col-sm-7">
                             <div className="product-information">
                                 <img src="/assets/images/product-details/new.jpg" className="newarrival" alt="" />
-                                <h2>Anne Klein Sleeveless Colorblock Scuba</h2>
-                                <p>Web ID: 1089772</p>
+                                <h2>{mproductDetail.name}</h2>
+                                <p>Web ID: {mproductDetail._id}</p>
                                 <img src="images/product-details/rating.png" alt="" />
                                 <span>
-                                    <span>US $59</span>
+                                    <span>US ${mproductDetail.price }</span>
                                     <label>Quantity:</label>
-                                    <input type="text" value="3" />
+                                    <input type="text" />
                                     <button type="button" className="btn btn-fefault cart">
                                         <i className="fa fa-shopping-cart"></i>
                                         Add to cart
 									</button>
                                 </span>
-                                <p><b>Availability:</b> In Stock</p>
-                                <p><b>Condition:</b> New</p>
-                                <p><b>Brand:</b> E-SHOPPER</p>
+                                <p><b>Category:</b> {nameCategory}</p>
+                                <p><b>Release date </b> { new Date(mproductDetail.release_date).toDateString("yyyy-MM-dd")}</p>
+                                <p><b>Publisher:</b> {mproductDetail.NSX}</p>
                                 <a href=""><img src="/assets/images/product-details/share.png" className="share img-responsive" alt="" /></a>
                             </div>
                         </div>
