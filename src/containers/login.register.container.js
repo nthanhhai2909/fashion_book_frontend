@@ -107,7 +107,7 @@ class LoginRegisterContainer extends Component {
             }
             return
         }
-        this.props.actions.loginSuccess(this.state.emailLogin, res.data.token)
+        this.props.actions.loginSuccess(this.state.emailLogin, res.data.token, res.data.user)
         this.props.history.push('/')
 
     }

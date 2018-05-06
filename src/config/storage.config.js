@@ -16,3 +16,12 @@ exports.removeEmail = () => {
 exports.getEmail = () => {
     return localStorage.getItem('email')
 }
+exports.setUser = (user) => {
+    localStorage.setItem("user", JSON.stringify(user))
+}
+exports.getUser = () => {
+    return JSON.parse(localStorage.getItem('user'))
+}
+exports.clear = () => {
+    localStorage.clear()
+}

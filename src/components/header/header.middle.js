@@ -1,8 +1,32 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import storeConfig from '../../config/storage.config'
 class HeaderMiddle extends Component {
     constructor(props){
         super(props)
+
+        this.state = {
+            email: "Account"
+        }
+    }
+    componentWillMount() {
+        if(storeConfig.getEmail() !== null) {
+            this.setState({
+                email: storeConfig.getEmail()
+            })
+        }
+    }
+    componentWillReceiveProps(nextProps) {
+        if(!nextProps.islogin) {
+            this.setState({
+                email: "Account"
+            })
+        }
+        else {
+            this.setState({
+                email: storeConfig.getEmail()
+            })
+        }
     }
     handlelogin = () => {
         if(this.props.islogin) {
@@ -54,7 +78,7 @@ class HeaderMiddle extends Component {
                         <div className="col-sm-8">
                             <div className="shop-menu pull-right">
                                 <ul className="nav navbar-nav">
-                                    <li><a href="#"><i className="fa fa-user"></i> Account</a></li>
+                                    <li><Link to="/"><i className="fa fa-user"></i> {this.state.email}</Link></li>
                                     <li><a href="#"><i className="fa fa-star"></i> Wishlist</a></li>
                                     <li><a href="checkout.html"><i className="fa fa-crosshairs"></i> Checkout</a></li>
                                     <li><a href="cart.html"><i className="fa fa-shopping-cart"></i> Cart</a></li>

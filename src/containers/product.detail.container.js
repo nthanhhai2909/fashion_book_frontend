@@ -18,13 +18,12 @@ class ProductDetailContainer extends Component {
     componentWillReceiveProps(nextProps) {
         if(nextProps.mproductDetail !== null ) {
             this.props.productActions.getNameCategoryByID(nextProps.mproductDetail.id_category)
-            this.props.productActions.getNamePubliserByID(nextProps.mproductDetail.NSX)
+            this.props.productActions.getNamePubliserByID(nextProps.mproductDetail.id_nsx)
         }
 
     }
 
     render() {
-        console.log(" ahuhu " + this.props.namePublicsher)
         if(this.props.mproductDetail && this.props.nameCategory && this.props.namePublicsher) {
             return (
                 <div>
@@ -34,6 +33,7 @@ class ProductDetailContainer extends Component {
                         mproductDetail={this.props.mproductDetail}
                         nameCategory={this.props.nameCategory}
                         namePublicsher={this.props.namePublicsher}
+                        islogin={this.props.islogin}
                     />
                 </div>
             )
@@ -52,7 +52,8 @@ const mapStateToProps = state => ({
     publisher: state.homeReducers.publisher.data,
     mproductDetail: state.productReducers.product.productDetail,
     nameCategory: state.productReducers.product.nameCategory,
-    namePublicsher: state.productReducers.product.namePublicsher
+    namePublicsher: state.productReducers.product.namePublicsher,
+    islogin: state.userReducers.login.islogin,
 })
 const mapDispatchToProps = dispatch => {
     return ({

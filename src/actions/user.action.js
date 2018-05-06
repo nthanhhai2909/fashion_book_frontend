@@ -1,9 +1,10 @@
 import { userTypes } from '../constants/action.types'
 import storeConfig from '../config/storage.config'
 import axios from 'axios'
-export const loginSuccess = (email, token) => (dispatch, getState) => {
+export const loginSuccess = (email, token, user) => (dispatch, getState) => {
     storeConfig.setToken(token)
     storeConfig.setEmail(email)
+    storeConfig.setUser(user)
     dispatch(setEmail(email))
 }
 
