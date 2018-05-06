@@ -11,13 +11,13 @@ const ProductItem = ({urlImg, price, describe, id }) => (
                     <p>{describe}</p>
                     <a href="#" className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart"></i>Add to cart</a>
                 </div>
-                <Link to={'/product/' + id} className="product-overlay">  
+                <div  className="product-overlay">  
                     <div className="overlay-content">
-                        <h2>{price}</h2>
-                        <p>{describe}</p>
+                        <Link to={'/product/' + id}><h2>{price}</h2></Link>
+                        <Link to={'/product/' + id}><p>{describe}</p></Link>
                         <p href="#" className="btn btn-default add-to-cart"><i className="fa fa-shopping-cart"></i>Add to cart</p>
                     </div>
-                </Link>
+                </div>
             </div>
         </div>
     </div>

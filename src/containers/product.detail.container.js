@@ -13,16 +13,19 @@ class ProductDetailContainer extends Component {
         this.props.homeActions.getCategory()
         this.props.homeActions.getPublisher()
         this.props.productActions.getBookDetail(this.props.match.params.id)
+        
     }
     componentWillReceiveProps(nextProps) {
-        if(nextProps.mproductDetail !== null) {
+        if(nextProps.mproductDetail !== null ) {
             this.props.productActions.getNameCategoryByID(nextProps.mproductDetail.id_category)
+            this.props.productActions.getNamePubliserByID(nextProps.mproductDetail.NSX)
         }
 
     }
 
     render() {
-        if(this.props.mproductDetail && this.props.nameCategory) {
+        console.log(" ahuhu " + this.props.namePublicsher)
+        if(this.props.mproductDetail && this.props.nameCategory && this.props.namePublicsher) {
             return (
                 <div>
                     <ProductDetail
@@ -30,6 +33,7 @@ class ProductDetailContainer extends Component {
                         publisher={this.props.publisher}
                         mproductDetail={this.props.mproductDetail}
                         nameCategory={this.props.nameCategory}
+                        namePublicsher={this.props.namePublicsher}
                     />
                 </div>
             )
@@ -47,7 +51,8 @@ const mapStateToProps = state => ({
     category: state.homeReducers.category.data,
     publisher: state.homeReducers.publisher.data,
     mproductDetail: state.productReducers.product.productDetail,
-    nameCategory: state.productReducers.product.nameCategory
+    nameCategory: state.productReducers.product.nameCategory,
+    namePublicsher: state.productReducers.product.namePublicsher
 })
 const mapDispatchToProps = dispatch => {
     return ({

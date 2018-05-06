@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-const ContentProductDetail = ({ category, publisher, mproductDetail, nameCategory}) => (
+const ContentProductDetail = ({ category, publisher, mproductDetail, nameCategory, namePublicsher}) => (
     <section>
         <div className="container">
             <div className="row">
@@ -105,7 +105,7 @@ const ContentProductDetail = ({ category, publisher, mproductDetail, nameCategor
                                 </span>
                                 <p><b>Category:</b> {nameCategory}</p>
                                 <p><b>Release date </b> { new Date(mproductDetail.release_date).toDateString("yyyy-MM-dd")}</p>
-                                <p><b>Publisher:</b> {mproductDetail.NSX}</p>
+                                <p><b>Publisher:</b> {namePublicsher}</p>
                                 <a href=""><img src="/assets/images/product-details/share.png" className="share img-responsive" alt="" /></a>
                             </div>
                         </div>

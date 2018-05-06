@@ -21,11 +21,26 @@ export const getNameCategoryByID = (id) => async (dispatch) => {
     }
     dispatch(setNameCategory(res.data.name))
 }
+export const getNamePubliserByID = (id) => async (dispatch) => {
+    let res
+    try {
+        res = await axios.get('http://localhost:8080/publisher/name/' + id)
+    }
+    catch (err) {
+        return
+    }
+
+    dispatch(setNamePubliser(res.data.name))
+}
 export const setProductDetail = (productDetail) => ({
     type: productTypes.SET_PRODUCT_DETAIL,
     productDetail
 })
 export const setNameCategory = (name) => ({
     type: productTypes.SET_NAME_CATEGORY,
+    name
+})
+export const setNamePubliser = (name) => ({
+    type: productTypes.SET_NAME_PUBLICSHER,
     name
 })

@@ -15,6 +15,12 @@ const product = (state = {productDetail: null}, action) => {
                 nameCategory: action.name
             }
         }
+        case productTypes.SET_NAME_PUBLICSHER: {
+            return {
+                ...state,
+                namePublicsher: action.name
+            }
+        }
         default: return state
     }
 }
