@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 import ProductDetail from '../components/product.detail/product.detail'
 import * as productActions from '../actions/product.action'
 import * as homeActions from '../actions/home.action'
+import Loading from '../components/loading/loading'
 class ProductDetailContainer extends Component {
     constructor(props) {
         super(props)
@@ -35,9 +36,7 @@ class ProductDetailContainer extends Component {
         }
         else {
             return (
-                <div>
-                    "asdad"
-                </div>
+                <Loading/>
             )
         }
         

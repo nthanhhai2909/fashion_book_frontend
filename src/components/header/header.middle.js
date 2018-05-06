@@ -25,7 +25,7 @@ class HeaderMiddle extends Component {
                     <div className="row">
                         <div className="col-sm-4">
                             <div className="logo pull-left">
-                                <a href="index.html"><img src="assets/images/home/logo.png" alt="" /></a>
+                                <a href="index.html"><img src="/assets/images/home/logo.png" alt="" /></a>
                             </div>
                             <div className="btn-group pull-right">
                                 <div className="btn-group">
