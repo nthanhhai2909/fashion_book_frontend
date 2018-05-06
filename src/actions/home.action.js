@@ -60,3 +60,18 @@ export const setPublisher = (data) => ({
     type: homeTypes.SET_PUBLISHSER,
     data
 })
+
+export const backPage = () => (dispatch, getState) => {
+    let page = getState().homeReducers.book.page
+    if(page > 1) {
+        dispatch(setPage(parseInt(page) - 1))
+    }
+}
+
+export const nextPage = () => (dispatch, getState) => {
+    let page = getState().homeReducers.book.page
+    let totalpage = getState().homeReducers.book.totalpage
+    if(page < totalpage) {
+        dispatch(setPage(parseInt(page) + 1))
+    }
+}

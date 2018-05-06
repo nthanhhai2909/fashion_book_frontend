@@ -20,7 +20,7 @@ export const homeTypes = {
 
     SET_PAGE: 'SET_PAGE',
     SET_BOOK: 'SET_BOOK',
-    SET_TOTAL_PAGE: 'SET_TOTAL_PAGE'
+    SET_TOTAL_PAGE: 'SET_TOTAL_PAGE',
 }
 
 export const productTypes = {

@@ -5,6 +5,7 @@ import axios from 'axios'
 import Home from '../components/home/home'
 import * as userActions from '../actions/user.action'
 import * as homeActions from '../actions/home.action'
+import Loading from '../components/loading/loading'
 class HomeContainer extends React.Component {
     constructor(props) {
         super(props)
@@ -15,27 +16,45 @@ class HomeContainer extends React.Component {
         this.props.homeActions.getPublisher()
         this.props.homeActions.getBook()
     }
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.page !== this.props.page) {
+            this.props.homeActions.getBook()
+        }
+    }
     render() {
-        
-        return (
-            <div>
-                <Home
-                    islogin={this.props.islogin}
-                    logout={() => this.props.actions.logout()}
-                    category={this.props.category}
-                    publisher={this.props.publisher}
-                    book={this.props.book}
-                />
-            </div>
-        )
-
+        const {category, publisher, book, totalpage} = this.props
+        if(category !== null && publisher !== null && book !== null && totalpage !== null) {
+            return (
+                <div>
+                    <Home
+                        islogin={this.props.islogin}
+                        logout={() => this.props.actions.logout()}
+                        category={this.props.category}
+                        publisher={this.props.publisher}
+                        book={this.props.book}
+                        totalpage={this.props.totalpage}
+                        backPage={() => this.props.homeActions.backPage()}
+                        nextPage={() => this.props.homeActions.nextPage()}
+                        setPage={(page) => this.props.homeActions.setPage(page)}
+                        page={this.props.page}
+                    />
+                </div>
+            )
+        }
+        else {
+            return (
+                <Loading/>
+            )
+        }
     }
 }
 const mapStateToProps = state => ({
     islogin: state.userReducers.login.islogin,
     category: state.homeReducers.category.data,
     publisher: state.homeReducers.publisher.data,
-    book: state.homeReducers.book.data
+    book: state.homeReducers.book.data, 
+    totalpage: state.homeReducers.book.totalpage,
+    page: state.homeReducers.book.page
 })
 
 const mapDispatchToProps = dispatch =>{
