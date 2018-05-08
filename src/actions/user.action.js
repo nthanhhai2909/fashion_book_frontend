@@ -1,17 +1,20 @@
 import { userTypes } from '../constants/action.types'
 import storeConfig from '../config/storage.config'
 import axios from 'axios'
-export const loginSuccess = (email, token, user) => (dispatch, getState) => {
-    storeConfig.setToken(token)
-    storeConfig.setEmail(email)
+export const loginSuccess = (token, user) => (dispatch, getState) => {
     storeConfig.setUser(user)
-    dispatch(setEmail(email))
+    storeConfig.setToken(token)
+    dispatch(setLoginSuccess())
 }
 
 export const auth = () => async (dispatch, getState)  => {
-    
-    let email = storeConfig.getEmail()
+    if(storeConfig.getUser() === null){
+        dispatch(setLoginFail())
+        return
+    }
+    let email = storeConfig.getUser().email
     let token = storeConfig.getToken()
+    dispatch(resetIsLogin())
     let res
     try {
         res = await axios.post('http://localhost:8080/auth', {
@@ -25,10 +28,11 @@ export const auth = () => async (dispatch, getState)  => {
     }
     dispatch(setLoginSuccess())
 }
-
+export const resetIsLogin = () => ({
+    type: userTypes.RESET_IS_LOGIN
+})
 export const logout = () => (dispatch, getState) => {
-    storeConfig.removeEmail()
-    storeConfig.removeToken()
+    storeConfig.clear()
     dispatch(setLoginFail())
 }
 export const setEmail = (email) => ({
@@ -36,10 +40,12 @@ export const setEmail = (email) => ({
     email,
 })
 export const setLoginSuccess = () => ({
-    type: userTypes.LOGIN_SUCCESS
+    type: userTypes.LOGIN_SUCCESS,
+    data: 'login success'
 })
 export const setLoginFail = () => ({
-    type: userTypes.LOGIN_FAIL
+    type: userTypes.LOGIN_FAIL,
+    data: 'login success'   
 })
 
 export const forgotEmailSuccess = () => ({

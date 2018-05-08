@@ -21,6 +21,9 @@ class HomeContainer extends React.Component {
             this.props.homeActions.getBook()
         }
     }
+    componentWillUnmount() {
+        this.props.actions.resetIsLogin()
+    }
     render() {
         const {category, publisher, book, totalpage} = this.props
         if(category !== null && publisher !== null && book !== null && totalpage !== null) {

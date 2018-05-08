@@ -25,6 +25,11 @@ const login = (state = initial, action) => {
                 islogin: false
             }
         }
+        case userTypes.RESET_IS_LOGIN:
+            return {
+                ...state,
+                islogin: null
+            }
         default: {
             return state
         }

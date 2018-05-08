@@ -13,6 +13,7 @@ const Home = ({ islogin, logout, category, publisher, book, totalpage, backPage,
             <HeaderMiddle
                 islogin={islogin}
                 logout={()=>logout()}
+
             />
             <HeaderBottom />
         </header>

@@ -4,15 +4,14 @@ import storeConfig from '../../config/storage.config'
 class HeaderMiddle extends Component {
     constructor(props){
         super(props)
-
         this.state = {
             email: "Account"
         }
     }
     componentWillMount() {
-        if(storeConfig.getEmail() !== null) {
+        if(storeConfig.getUser() !== null) {
             this.setState({
-                email: storeConfig.getEmail()
+                email: storeConfig.getUser().email
             })
         }
     }
@@ -24,7 +23,7 @@ class HeaderMiddle extends Component {
         }
         else {
             this.setState({
-                email: storeConfig.getEmail()
+                email: storeConfig.getUser().email
             })
         }
     }
@@ -32,13 +31,13 @@ class HeaderMiddle extends Component {
         if(this.props.islogin) {
             return (
                 <li
-                onClick={this.props.logout}
+                onClick={() => this.props.logout()}
                 ><Link to="/"><i className="fa fa-lock"></i>Logout</Link></li>
             )
         }
         else {
             return (
-                <li onClick={this.props.logout()}><Link to="/login_register"><i className="fa fa-lock"></i>Login</Link></li>
+                <li ><Link to="/login_register"><i className="fa fa-lock"></i>Login</Link></li>
             )
         }
     } 
@@ -78,7 +77,7 @@ class HeaderMiddle extends Component {
                         <div className="col-sm-8">
                             <div className="shop-menu pull-right">
                                 <ul className="nav navbar-nav">
-                                    <li><Link to="/"><i className="fa fa-user"></i> {this.state.email}</Link></li>
+                                    <li><Link to={"/profile/" + this.state.email}><i className="fa fa-user"></i> {this.state.email}</Link></li>
                                     <li><a href="#"><i className="fa fa-star"></i> Wishlist</a></li>
                                     <li><a href="checkout.html"><i className="fa fa-crosshairs"></i> Checkout</a></li>
                                     <li><a href="cart.html"><i className="fa fa-shopping-cart"></i> Cart</a></li>
