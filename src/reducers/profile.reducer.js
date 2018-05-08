@@ -15,6 +15,21 @@ const profile = (state = {}, action) => {
                 isauth: false
             }
         }
+        case profileTypes.UPDATE_INFOR_USER_SUCCESS: {
+            return {
+                ...state,
+                isupdate: true
+            }
+        }
+        case profileTypes.UPDATE_INFOR_USER_FAIL: {
+            return {
+                ...state,
+                isupdate: false
+            }
+        }
+        case profileTypes.RESET_PROFILE: {
+            return {}
+        }
         default: return state
     }
 }

@@ -10,11 +10,10 @@ export const loginSuccess = (token, user) => (dispatch, getState) => {
 export const auth = () => async (dispatch, getState)  => {
     if(storeConfig.getUser() === null){
         dispatch(setLoginFail())
-        return
+        return false
     }
     let email = storeConfig.getUser().email
     let token = storeConfig.getToken()
-    dispatch(resetIsLogin())
     let res
     try {
         res = await axios.post('http://localhost:8080/auth', {
@@ -24,9 +23,10 @@ export const auth = () => async (dispatch, getState)  => {
     }
     catch (err) {
         dispatch(setLoginFail())
-        return
+        return false
     }
     dispatch(setLoginSuccess())
+    return true
 }
 export const resetIsLogin = () => ({
     type: userTypes.RESET_IS_LOGIN

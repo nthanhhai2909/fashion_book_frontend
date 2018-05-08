@@ -41,6 +41,7 @@ class HeaderMiddle extends Component {
             )
         }
     } 
+
     render() {
         return (
             <div className="header-middle">

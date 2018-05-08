@@ -1927,7 +1927,9 @@ h2.title {
   font-size: 20px;
   font-weight: 300
 }
-
+.shopper-info .error {
+  color: #5BBCEC;
+}
 
 .shopper-info .btn-primary {
   background: #FE980F;
