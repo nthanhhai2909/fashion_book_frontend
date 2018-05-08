@@ -12,7 +12,7 @@ const Home = ({ islogin, logout, category, publisher, book, totalpage, backPage,
             <HeaderTop />
             <HeaderMiddle
                 islogin={islogin}
-                logout={() => logout}
+                logout={()=>logout()}
             />
             <HeaderBottom />
         </header>
