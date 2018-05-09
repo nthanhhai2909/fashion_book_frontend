@@ -29,7 +29,7 @@ class ContentHome extends Component {
                                             return (
                                                 <div key={index} className="panel panel-default">
                                                     <div className="panel-heading">
-                                                        <h4 className="panel-title"><a key={index}>{element.name}</a></h4>
+                                                        <h4 className="panel-title item-custom"><a key={index}>{element.name}</a></h4>
                                                     </div>
                                                 </div>
                                             )
@@ -43,7 +43,7 @@ class ContentHome extends Component {
                                         <ul className="nav nav-pills nav-stacked">
                                             {this.props.publisher.map((element, index) => {
                                                 return (
-                                                    <li><a href="#"> <span class="pull-right"></span>{element.name}</a></li>
+                                                    <li className="item-custom"item-custom><a> <span class="pull-right"></span>{element.name}</a></li>
                                                 )
                                             })}
                                         </ul>

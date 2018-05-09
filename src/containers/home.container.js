@@ -6,9 +6,11 @@ import Home from '../components/home/home'
 import * as userActions from '../actions/user.action'
 import * as homeActions from '../actions/home.action'
 import Loading from '../components/loading/loading'
+import {sortTypes} from '../constants/action.types'
 class HomeContainer extends React.Component {
     constructor(props) {
         super(props)
+
     }
     componentWillMount() {
         this.props.actions.auth()
@@ -40,6 +42,8 @@ class HomeContainer extends React.Component {
                         nextPage={() => this.props.homeActions.nextPage()}
                         setPage={(page) => this.props.homeActions.setPage(page)}
                         page={this.props.page}
+                        sortType={this.props.sortType}
+                        setSortType={(value) => this.props.homeActions.setSortType(value)}
                     />
                 </div>
             )
@@ -57,7 +61,8 @@ const mapStateToProps = state => ({
     publisher: state.homeReducers.publisher.data,
     book: state.homeReducers.book.data, 
     totalpage: state.homeReducers.book.totalpage,
-    page: state.homeReducers.book.page
+    page: state.homeReducers.book.page, 
+    sortType: state.homeReducers.book.sortType
 })
 
 const mapDispatchToProps = dispatch =>{

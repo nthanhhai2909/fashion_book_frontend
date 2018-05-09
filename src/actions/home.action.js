@@ -1,6 +1,5 @@
 import axios from 'axios'
-import { homeTypes } from '../constants/action.types'
-
+import { homeTypes, sortTypes } from '../constants/action.types'
 export const getCategory = () => async (dispatch, getState) =>  {
     let res
     try {
@@ -75,3 +74,54 @@ export const nextPage = () => (dispatch, getState) => {
         dispatch(setPage(parseInt(page) + 1))
     }
 }
+export const setSortType = (sortType) => async (dispatch, getState) => {
+    dispatch(setSort(sortType))
+    dispatch(setPage(1))
+    let sorttype = 'release_date'
+    let sortorder = '-1'
+    if (sortType === sortTypes.SORT_DAY_DECREASED) {
+        sorttype = 'release_date'
+        sortorder = '-1'
+    } else if (sortType === sortTypes.SORT_DAY_INCREASED) {
+        sorttype = 'release_date'
+        sortorder = '1'
+    } else if (sortType === sortTypes.SORT_PRICE_DECREASED) {
+        sorttype = 'price'
+        sortorder = '-1'
+    } else if (sortType === sortTypes.SORT_PRICE_INCREASED) {
+        sorttype = 'price'
+        sortorder = '1'
+    } else if (sortType === sortTypes.SORT_SALES_DECREASED) {
+        sorttype = 'sales'
+        sortorder = '-1'
+    } else if (sortType === sortTypes.SORT_SALES_INCREASED) {
+        sorttype = 'sales'
+        sortorder = '1'
+    } else if (sortType === sortTypes.SORT_VIEWS_DECREASED) {
+        sorttype = 'view_counts'
+        sortorder = '-1'
+    } else if (sortType === sortTypes.SORT_VIEWS_INCREASED) {
+        sorttype = 'view_counts'
+        sortorder = '1'
+    }
+    console.log(sorttype + " ^^^ " + sortorder)
+    let res
+   
+    try {
+        res = await axios.post('http://localhost:8080/book/allbook', {
+            page: 1,
+            range: null,
+            sorttype: sorttype,
+            sortorder: sortorder
+        })
+    }
+    catch (err) {
+        return
+    }
+    dispatch(setBook(res.data.data))
+    dispatch(setTotalPage(res.data.totalPage))
+}
+export const setSort= (sortType) => ({
+    type: homeTypes.SET_SORT_TYPE,
+    sortType
+})

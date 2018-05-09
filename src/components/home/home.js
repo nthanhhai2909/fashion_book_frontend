@@ -6,16 +6,21 @@ import ContentHome from './content.home'
 import FooterTop from '../footer/footer.top'
 import FooterMiddle from '../footer/footer.middle'
 import FooterBottom from '../footer/footer.bottom'
-const Home = ({ islogin, logout, category, publisher, book, totalpage, backPage, nextPage, setPage, page  }) => (
+const Home = ({ islogin, logout, category,
+     publisher, book, totalpage, backPage,
+      nextPage, setPage, page, sortType, setSortType }) => (
     <div>
         <header id="header">
             <HeaderTop />
             <HeaderMiddle
                 islogin={islogin}
-                logout={()=>logout()}
+                logout={() => logout()}
 
             />
-            <HeaderBottom />
+            <HeaderBottom
+                sortType={sortType}
+                setSortType={(value) => setSortType(value)}
+            />
         </header>
         <ContentHome
             category={category}

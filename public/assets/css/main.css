@@ -21,7 +21,9 @@ a:hover {
 outline: none;
 text-decoration:none;
 }
-
+.item-custom {
+  cursor: pointer;
+}
 a:focus {
   outline:none;
   outline-offset: 0;

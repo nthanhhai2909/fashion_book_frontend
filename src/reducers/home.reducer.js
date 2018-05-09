@@ -1,4 +1,4 @@
-import { homeTypes } from '../constants/action.types'
+import { homeTypes, sortTypes } from '../constants/action.types'
 import { combineReducers } from 'redux'
 
 const category = (state = { data: [] }, action) => {
@@ -23,7 +23,8 @@ const publisher = (state = { data: [] }, action) => {
         default: return state
     }
 }
-const book = (state = { data: [], page: 1, totalpage: null }, action) => {
+
+const book = (state = { data: [], page: 1, totalpage: null, sortType: sortTypes.SORT_DAY_DECREASED }, action) => {
     switch (action.type) {
         case homeTypes.SET_BOOK: {
             return {
@@ -41,6 +42,12 @@ const book = (state = { data: [], page: 1, totalpage: null }, action) => {
             return {
                 ...state,
                 totalpage: action.totalpage
+            }
+        }
+        case homeTypes.SET_SORT_TYPE: {
+            return {
+                ...state,
+                sortType: action.sortType
             }
         }
         default: return state
