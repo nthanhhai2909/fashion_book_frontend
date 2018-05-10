@@ -163,7 +163,6 @@ export const setRangeType = (range) => async (dispatch, getState) => {
         })
     }
     catch (err) {
-
         return
     }
     dispatch(setRange(range))

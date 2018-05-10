@@ -16,7 +16,7 @@ class ProfileContainer extends Component {
             address: null,
             phone_number: null
         }
-    }
+    }   
     async componentWillMount() {
         
         let res = await this.props.actions.auth()

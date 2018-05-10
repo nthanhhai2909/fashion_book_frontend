@@ -9,7 +9,7 @@ import FooterBottom from '../footer/footer.bottom'
 const Home = ({ islogin, logout, category,
     publisher, book, totalpage, backPage,
     nextPage, setPage, page, sortType, setSortType,
-    setRangeType, title, setTitle, setBranch }) => (
+    setRangeType, title, setTitle, setBranch, branch }) => (
         <div>
             <header id="header">
                 <HeaderTop />
@@ -35,6 +35,7 @@ const Home = ({ islogin, logout, category,
                 title={title}
                 setTitle={(title) => setTitle(title)}
                 setBranch={(branch) => setBranch(branch)}
+                branch={branch}
             />
             <footer id="footer">
                 <FooterTop />

@@ -48,6 +48,7 @@ class HomeContainer extends React.Component {
                         title={this.props.title}
                         setTitle={(title) => this.props.homeActions.setTitle(title)}
                         setBranch={(branch) => this.props.homeActions.setBranch(branch)}
+                        branch={this.props.branch}
                     />
                 </div>
             )
@@ -68,6 +69,7 @@ const mapStateToProps = state => ({
     page: state.homeReducers.book.page, 
     sortType: state.homeReducers.book.sortType,
     title: state.homeReducers.book.title,
+    branch: state.homeReducers.book.branch
 })
 
 const mapDispatchToProps = dispatch =>{
