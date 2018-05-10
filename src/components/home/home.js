@@ -8,14 +8,14 @@ import FooterMiddle from '../footer/footer.middle'
 import FooterBottom from '../footer/footer.bottom'
 const Home = ({ islogin, logout, category,
      publisher, book, totalpage, backPage,
-      nextPage, setPage, page, sortType, setSortType }) => (
+      nextPage, setPage, page, sortType, setSortType,
+      setRangeType }) => (
     <div>
         <header id="header">
             <HeaderTop />
             <HeaderMiddle
                 islogin={islogin}
                 logout={() => logout()}
-
             />
             <HeaderBottom
                 sortType={sortType}
@@ -31,6 +31,7 @@ const Home = ({ islogin, logout, category,
             nextPage={() => nextPage()}
             setPage={(page) => setPage(page)}
             page={page}
+            setRangeType={(range) => setRangeType(range)}
         />
         <footer id="footer">
             <FooterTop />

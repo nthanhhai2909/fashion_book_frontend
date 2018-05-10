@@ -49,19 +49,24 @@ class ContentHome extends Component {
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="price-range">
+                                <div className="price-range">
                                     <h2>Price Range</h2>
-                                    <div class="well text-center">
-                                        <div class="radio">
-                                            <label><input type="radio" name="optradio" />Option 1</label>
+                                    <div className="well ">
+                                        <div className="radio">
+                                            <label onClick={() => this.props.setRangeType(null)}><input type="radio" name="optradio" />ALl price</label>
                                         </div>
-                                        <div class="radio">
-                                            <label><input type="radio" name="optradio" />Option 2</label>
+                                        <div className="radio">
+                                            <label onClick={() => this.props.setRangeType({low: 0, high:20})}><input type="radio" name="optradio" />0 ---- 20 USD</label>
                                         </div>
-                                        <div class="radio disabled">
-                                            <label><input type="radio" name="optradio" />Option 3</label>
+                                        <div className="radio disabled">
+                                            <label onClick={() => this.props.setRangeType({low: 20, high:50})}><input type="radio" name="optradio" />20 ---- 50 USD</label>
                                         </div>
-
+                                        <div className="radio disabled">
+                                            <label onClick={() => this.props.setRangeType({low: 50, high:100})}><input type="radio" name="optradio" />50 ---- 100 USD</label>
+                                        </div>
+                                        <div className="radio disabled">
+                                            <label onClick={() => this.props.setRangeType({low: 100, high:1000})}><input type="radio" name="optradio" /> >= 100 USD</label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -20,8 +20,8 @@ export const homeTypes = {
     SET_PAGE: 'SET_PAGE',
     SET_BOOK: 'SET_BOOK',
     SET_TOTAL_PAGE: 'SET_TOTAL_PAGE',
-    SET_SORT_TYPE: 'SET_SORT_TYPE'
-
+    SET_SORT_TYPE: 'SET_SORT_TYPE',
+    SET_RANGE: 'SET_RANGE'
 }
 
 export const productTypes = {
@@ -46,4 +46,5 @@ export const sortTypes =  {
     SORT_SALES_DECREASED: 'SORT_SALES_DECREASED',
     SORT_PRICE_INCREASED: 'SORT_PRICE_INCREASED',
     SORT_PRICE_DECREASED: 'SORT_PRICE_DECREASED',
+
 }

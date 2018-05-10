@@ -24,7 +24,8 @@ const publisher = (state = { data: [] }, action) => {
     }
 }
 
-const book = (state = { data: [], page: 1, totalpage: null, sortType: sortTypes.SORT_DAY_DECREASED }, action) => {
+const book = (state = { data: [], page: 1, totalpage: null,
+     sortType: sortTypes.SORT_DAY_DECREASED, sortOrder: -1 }, action) => {
     switch (action.type) {
         case homeTypes.SET_BOOK: {
             return {
@@ -47,7 +48,14 @@ const book = (state = { data: [], page: 1, totalpage: null, sortType: sortTypes.
         case homeTypes.SET_SORT_TYPE: {
             return {
                 ...state,
-                sortType: action.sortType
+                sortType: action.sortType,
+                sortOrder: action.sortOrder
+            }
+        }
+        case homeTypes.SET_RANGE: {
+            return {
+                ...state,
+                range: action.range
             }
         }
         default: return state

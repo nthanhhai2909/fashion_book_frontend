@@ -44,6 +44,7 @@ class HomeContainer extends React.Component {
                         page={this.props.page}
                         sortType={this.props.sortType}
                         setSortType={(value) => this.props.homeActions.setSortType(value)}
+                        setRangeType={(range) => this.props.homeActions.setRangeType(range)}
                     />
                 </div>
             )
