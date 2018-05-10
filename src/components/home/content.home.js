@@ -27,7 +27,12 @@ class ContentHome extends Component {
                                     {
                                         this.props.category.map((element, index) => {
                                             return (
-                                                <div key={index} className="panel panel-default">
+                                                <div key={index} 
+                                                onClick={() => {
+                                                    this.props.setTitle(element.name)
+                                                    this.props.setBranch('category')
+                                                }}
+                                                className="panel panel-default">
                                                     <div className="panel-heading">
                                                         <h4 className="panel-title item-custom"><a key={index}>{element.name}</a></h4>
                                                     </div>
@@ -43,12 +48,35 @@ class ContentHome extends Component {
                                         <ul className="nav nav-pills nav-stacked">
                                             {this.props.publisher.map((element, index) => {
                                                 return (
-                                                    <li className="item-custom"item-custom><a> <span class="pull-right"></span>{element.name}</a></li>
+                                                    <li
+                                                    onClick={() => {
+                                                        this.props.setTitle(element.name)
+                                                        this.props.setBranch('publisher')
+                                                    }} 
+                                                    className="item-custom"item-custom><a> <span class="pull-right"></span>{element.name}</a></li>
                                                 )
                                             })}
                                         </ul>
                                     </div>
                                 </div>
+                                <br/>
+                                <div className="brands_products">
+                                <h2>AUTHOR</h2>
+                                <div className="brands-name">
+                                    <ul className="nav nav-pills nav-stacked">
+                                        {this.props.publisher.map((element, index) => {
+                                            return (
+                                                <li
+                                                onClick={() => {
+                                                    this.props.setTitle(element.name)
+                                                    this.props.setBranch('publisher')
+                                                }} 
+                                                className="item-custom"item-custom><a> <span class="pull-right"></span>{element.name}</a></li>
+                                            )
+                                        })}
+                                    </ul>
+                                </div>
+                            </div>
                                 <div className="price-range">
                                     <h2>Price Range</h2>
                                     <div className="well ">
@@ -74,7 +102,7 @@ class ContentHome extends Component {
 
                         <div className="col-sm-9 padding-right">
                             <div className="features_items">
-                                <h2 className="title text-center">Features Items</h2>
+                                <h2 className="title text-center">{this.props.title}</h2>
                                 {this.props.book.map((element, index) => {
                                     return (
                                         <ProductItem

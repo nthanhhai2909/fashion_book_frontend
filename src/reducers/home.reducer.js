@@ -24,8 +24,10 @@ const publisher = (state = { data: [] }, action) => {
     }
 }
 
-const book = (state = { data: [], page: 1, totalpage: null,
-     sortType: sortTypes.SORT_DAY_DECREASED, sortOrder: -1 }, action) => {
+const book = (state = {
+    data: [], page: 1, totalpage: null, title: 'ALL BOOK',
+    sortType: sortTypes.SORT_DAY_DECREASED, sortOrder: -1
+}, action) => {
     switch (action.type) {
         case homeTypes.SET_BOOK: {
             return {
@@ -58,6 +60,23 @@ const book = (state = { data: [], page: 1, totalpage: null,
                 range: action.range
             }
         }
+        case homeTypes.SET_NAME_TITLE_ITEM: {
+            return {
+                ...state,
+                title: action.title
+            }
+        }
+        case homeTypes.SET_BRANCH_SEARCH_BOOK: {
+            return {
+                ...state,
+                branch: action.branch
+            }
+        }
+        case homeTypes.RESET_BOOK: {
+            return { data: [], page: 1, totalpage: null, title: 'ALL BOOK',
+            sortType: sortTypes.SORT_DAY_DECREASED, sortOrder: -1}
+        }
+        
         default: return state
     }
 }

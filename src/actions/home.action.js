@@ -8,7 +8,6 @@ export const getCategory = () => async (dispatch, getState) =>  {
     catch (err) {
         return
     }
-
     dispatch(setCategory(res.data.data))
 }
 
@@ -176,3 +175,11 @@ export const setRange = (range) => ({
     type: homeTypes.SET_RANGE,
     range
 })
+ export const setBranch = (branch) => ({
+     type: homeTypes.SET_BRANCH_SEARCH_BOOK,
+     branch
+ })
+ export const setTitle = (title) => ({
+     type: homeTypes.SET_NAME_TITLE_ITEM, 
+     title
+ })

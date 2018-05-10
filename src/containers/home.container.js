@@ -45,6 +45,9 @@ class HomeContainer extends React.Component {
                         sortType={this.props.sortType}
                         setSortType={(value) => this.props.homeActions.setSortType(value)}
                         setRangeType={(range) => this.props.homeActions.setRangeType(range)}
+                        title={this.props.title}
+                        setTitle={(title) => this.props.homeActions.setTitle(title)}
+                        setBranch={(branch) => this.props.homeActions.setBranch(branch)}
                     />
                 </div>
             )
@@ -63,7 +66,8 @@ const mapStateToProps = state => ({
     book: state.homeReducers.book.data, 
     totalpage: state.homeReducers.book.totalpage,
     page: state.homeReducers.book.page, 
-    sortType: state.homeReducers.book.sortType
+    sortType: state.homeReducers.book.sortType,
+    title: state.homeReducers.book.title,
 })
 
 const mapDispatchToProps = dispatch =>{

@@ -7,5 +7,5 @@ export default combineReducers({
     userReducers,
     homeReducers,
     productReducers,
-    profileReducers
+    profileReducers,
 })
