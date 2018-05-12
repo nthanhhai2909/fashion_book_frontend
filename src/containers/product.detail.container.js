@@ -34,6 +34,9 @@ class ProductDetailContainer extends Component {
                         nameCategory={this.props.nameCategory}
                         namePublicsher={this.props.namePublicsher}
                         islogin={this.props.islogin}
+                        setSearchText={(value) => this.props.homeActions.setSearchText(value)}
+                        sortType={this.props.sortType}
+                        setSortType={(value) => this.props.homeActions.setSortType(value)}
                     />
                 </div>
             )

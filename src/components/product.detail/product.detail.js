@@ -16,14 +16,18 @@ class ProductDetail extends Component {
                         islogin={this.props.islogin}
                         logout={() => this.props.logout}
                     />
-                    <HeaderBottom />
+                    <HeaderBottom
+                        sortType={this.props.sortType}
+                        setSortType={(value) => this.props.setSortType(value)}
+                        setSearchText={(value) => this.props.setSearchText(value)}
+                    />
                 </header>
                 <ContentProductDetail
                     category={this.props.category}
                     publisher={this.props.publisher}
-                    mproductDetail={this.props.mproductDetail}      
-                    nameCategory={this.props.nameCategory} 
-                    namePublicsher={this.props.namePublicsher}                                 
+                    mproductDetail={this.props.mproductDetail}
+                    nameCategory={this.props.nameCategory}
+                    namePublicsher={this.props.namePublicsher}
                 />
                 <footer id="footer">
                     <FooterTop />

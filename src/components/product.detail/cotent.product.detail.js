@@ -33,21 +33,6 @@ const ContentProductDetail = ({ category, publisher, mproductDetail, nameCategor
                                 </ul>
                             </div>
                         </div>
-                        <div className="price-range">
-                            <h2>Price Range</h2>
-                            <div className="well text-center">
-                                <div className="radio">
-                                    <label><input type="radio" name="optradio" />Option 1</label>
-                                </div>
-                                <div className="radio">
-                                    <label><input type="radio" name="optradio" />Option 2</label>
-                                </div>
-                                <div class="radio disabled">
-                                    <label><input type="radio" name="optradio" />Option 3</label>
-                                </div>
-
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div className="col-sm-9 padding-right">
