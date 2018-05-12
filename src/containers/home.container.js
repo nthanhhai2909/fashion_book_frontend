@@ -55,6 +55,7 @@ class HomeContainer extends React.Component {
                         setIDBranch={(id) => this.props.homeActions.setIDBranch(id)}
                         branchClick={(branch, id) => this.props.homeActions.branchClick(branch, id)}
                         history={this.props.history}
+                        searchTextSubmit={() => this.props.homeActions.searchTextSubmit()}
                     />
                 </div>
             )

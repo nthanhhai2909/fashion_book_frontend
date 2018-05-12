@@ -9,7 +9,8 @@ import ContentLoginRegister from './content.login.register'
 const Home = ({ setEmailogin, setPasswordlogin, setEmail,
     setFirstname, setLastname, setAddress, setPhone, setPassword, setConfirm,
     notificationRegister,notificationLogin, registerSubmit, 
-     loginSubmit, islogin, logout, sortType, setSortType, setSearchText}) => (
+     loginSubmit, islogin, logout, sortType, setSortType, setSearchText,
+     searchTextSubmit}) => (
         <div>
             <header id="header">
                 <HeaderTop />
@@ -20,6 +21,7 @@ const Home = ({ setEmailogin, setPasswordlogin, setEmail,
                     sortType={sortType}
                     setSortType={(value) => setSortType(value)}
                     setSearchText={(value) => setSearchText(value)}
+                    searchTextSubmit={() => searchTextSubmit()}
                 />
             </header>
             <ContentLoginRegister

@@ -48,6 +48,11 @@ class HeaderBottom extends Component {
         }
 
     }
+    handeSearch = (e) => {
+        if(e === 13) {
+            this.props.searchTextSubmit()
+        }
+    }
     render() {
         return (
             <div className="header-bottom">
@@ -86,10 +91,11 @@ class HeaderBottom extends Component {
                         </div>
                         <div className="col-sm-4">
                             <div className="search_box pull-right">
-                                <input 
-                                type="text" 
-                                placeholder="Search"
-                                onChange={(e) => this.props.setSearchText(e.target.value)}
+                                <input
+                                    type="text"
+                                    placeholder="Search"
+                                    onChange={(e) => this.props.setSearchText(e.target.value)}
+                                    onKeyUp={(e) => this.handeSearch(e.keyCode)}
                                 />
                             </div>
                         </div>

@@ -10,7 +10,8 @@ const Home = ({ islogin, logout, category,
     publisher, book, totalpage, backPage,
     nextPage, setPage, page, sortType, setSortType,
     setRangeType, title, setTitle, setBranch, branch, 
-    setSearchText, author, setIDBranch, branchClick, history }) => (
+    setSearchText, author, setIDBranch, branchClick, history,
+    searchTextSubmit }) => (
         <div>
             <header id="header">
                 <HeaderTop />
@@ -23,6 +24,7 @@ const Home = ({ islogin, logout, category,
                     sortType={sortType}
                     setSortType={(value) => setSortType(value)}
                     setSearchText={(value) => setSearchText(value)}
+                    searchTextSubmit={() =>searchTextSubmit()}
                 />
             </header>
             <ContentHome

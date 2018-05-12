@@ -37,6 +37,7 @@ class ProductDetailContainer extends Component {
                         setSearchText={(value) => this.props.homeActions.setSearchText(value)}
                         sortType={this.props.sortType}
                         setSortType={(value) => this.props.homeActions.setSortType(value)}
+                        searchTextSubmit={() => this.props.homeActions.searchTextSubmit()}
                     />
                 </div>
             )

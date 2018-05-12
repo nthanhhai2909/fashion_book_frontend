@@ -20,6 +20,7 @@ class ProductDetail extends Component {
                         sortType={this.props.sortType}
                         setSortType={(value) => this.props.setSortType(value)}
                         setSearchText={(value) => this.props.setSearchText(value)}
+                        searchTextSubmit={() => this.props.searchTextSubmit()}
                     />
                 </header>
                 <ContentProductDetail

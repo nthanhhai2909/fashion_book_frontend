@@ -258,7 +258,7 @@ export const setRange = (range) => ({
     
  }
 
- export const searchTextSubmit = (searchtext) => async(dispatch, getState) => {
+ export const searchTextSubmit = () => async(dispatch, getState) => {
     dispatch(setPage(1))
     let sorttype = 'release_date'
     let sortorder = '-1'
@@ -305,7 +305,7 @@ export const setRange = (range) => ({
             sorttype: sorttype,
             sortorder: sortorder,
             id: getState().homeReducers.book.id,
-            searchtext: searchtext
+            searchtext: getState().homeReducers.book.searchtext
         })
     }
     catch (err) {
