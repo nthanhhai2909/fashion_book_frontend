@@ -68,6 +68,7 @@ class ContentHome extends Component {
                                                     onClick={() => {
                                                         this.props.setTitle(element.name)
                                                         this.props.setBranch('category')
+                                                        this.props.setIDBranch(element._id)
                                                     }}
                                                     className="panel panel-default">
                                                     <div className="panel-heading">
@@ -89,8 +90,9 @@ class ContentHome extends Component {
                                                         onClick={() => {
                                                             this.props.setTitle(element.name)
                                                             this.props.setBranch('publisher')
+                                                            this.props.setIDBranch(element._id)
                                                         }}
-                                                        className="item-custom" item-custom><a> <span class="pull-right"></span>{element.name}</a></li>
+                                                        className="item-custom" item-custom><a> <span className="pull-right"></span>{element.name}</a></li>
                                                 )
                                             })}
                                         </ul>
@@ -101,14 +103,15 @@ class ContentHome extends Component {
                                     <h2>AUTHOR</h2>
                                     <div className="brands-name">
                                         <ul className="nav nav-pills nav-stacked">
-                                            {this.props.publisher.map((element, index) => {
+                                            {this.props.author.map((element, index) => {
                                                 return (
                                                     <li
                                                         onClick={() => {
                                                             this.props.setTitle(element.name)
-                                                            this.props.setBranch('publisher')
+                                                            this.props.setBranch('author')
+                                                            this.props.setIDBranch(element._id)
                                                         }}
-                                                        className="item-custom" item-custom><a> <span class="pull-right"></span>{element.name}</a></li>
+                                                        className="item-custom" item-custom><a> <span className="pull-right"></span>{element.name}</a></li>
                                                 )
                                             })}
                                         </ul>

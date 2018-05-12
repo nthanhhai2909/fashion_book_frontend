@@ -73,6 +73,10 @@ export const setAuthor = (data) => ({
     type: homeTypes.SET_AUTHOR,
     data
 })
+export const setIDBranch = (id) => ({
+    type: homeTypes.SET_ID_BRANCH,
+    id
+})
 export const backPage = () => (dispatch, getState) => {
     let page = getState().homeReducers.book.page
     if(page > 1) {
@@ -117,18 +121,28 @@ export const setSortType = (sortType) => async (dispatch, getState) => {
         sortorder = '1'
     }
     dispatch(setSort(sortType, sortorder))
-
+    let branch = getState().homeReducers.book.branch
+    let _link = 'http://localhost:8080/book/allbook'
+    if(branch === 'category') { 
+        _link = 'http://localhost:8080/book/category'
+    } else if (branch === 'publisher') {
+        _link = 'http://localhost:8080/book/publisher'
+    } else if(branch === 'author') {
+        _link = 'http://localhost:8080/book/author'
+    }
     let res
     try {
-        res = await axios.post('http://localhost:8080/book/allbook', {
+        res = await axios.post(_link, {
             page: 1,
             range: getState().homeReducers.book.range,
             sorttype: sorttype,
             sortorder: sortorder,
-            searchtext: getState
+            searchtext: getState,
+            id: getState().homeReducers.book.id
         })
     }
     catch (err) {
+        console.log(err.response)
         return
     }
     dispatch(setBook(res.data.data))
@@ -168,13 +182,24 @@ export const setRangeType = (range) => async (dispatch, getState) => {
         sorttype = 'view_counts'
         sortorder = '1'
     }
+    let branch = getState().homeReducers.book.branch
+    let _link = 'http://localhost:8080/book/allbook'
+    if(branch === 'category') { 
+        _link = 'http://localhost:8080/book/category'
+    } else if (branch === 'publisher') {
+        _link = 'http://localhost:8080/book/publisher'
+    } else if(branch === 'author') {
+        _link = 'http://localhost:8080/book/author'
+    }
+    
     let res
     try {
-        res = await axios.post('http://localhost:8080/book/allbook', {
+        res = await axios.post(_link, {
             page: 1,
             range: range,
             sorttype: sorttype,
-            sortorder: sortorder
+            sortorder: sortorder,
+            id: getState().homeReducers.book.id
         })
     }
     catch (err) {

@@ -26,7 +26,8 @@ export const homeTypes = {
     RESET_BOOK: 'RESET_BOOK',
     SET_BRANCH_SEARCH_BOOK:'SET_BRANCH_SEARCH_BOOK', 
     SET_SEARCH_TEXT: 'SET_SEARCH_TEXT',
-    SET_AUTHOR: 'SET_AUTHOR'
+    SET_AUTHOR: 'SET_AUTHOR',
+    SET_ID_BRANCH: 'SET_ID_BRANCH',
 }
 
 export const productTypes = {

@@ -51,6 +51,8 @@ class HomeContainer extends React.Component {
                         setBranch={(branch) => this.props.homeActions.setBranch(branch)}
                         branch={this.props.branch}
                         setSearchText={(value) => this.props.homeActions.setSearchText(value)}
+                        author={this.props.author}
+                        setIDBranch={(id) => this.props.homeActions.setIDBranch(id)}
                     />
                 </div>
             )

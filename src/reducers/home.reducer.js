@@ -83,6 +83,12 @@ const book = (state = {
                 branch: action.branch
             }
         }
+        case homeTypes.SET_ID_BRANCH: {
+            return {
+                ...state,
+                id: action.id
+            }
+        }
         case homeTypes.RESET_BOOK: {
             return { data: [], page: 1, totalpage: null, title: 'ALL BOOK',
             sortType: sortTypes.SORT_DAY_DECREASED, sortOrder: -1}
