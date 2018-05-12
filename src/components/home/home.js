@@ -9,7 +9,7 @@ import FooterBottom from '../footer/footer.bottom'
 const Home = ({ islogin, logout, category,
     publisher, book, totalpage, backPage,
     nextPage, setPage, page, sortType, setSortType,
-    setRangeType, title, setTitle, setBranch, branch }) => (
+    setRangeType, title, setTitle, setBranch, branch, setSearchText }) => (
         <div>
             <header id="header">
                 <HeaderTop />
@@ -20,6 +20,7 @@ const Home = ({ islogin, logout, category,
                 <HeaderBottom
                     sortType={sortType}
                     setSortType={(value) => setSortType(value)}
+                    setSearchText={(value) => setSearchText(value)}
                 />
             </header>
             <ContentHome
@@ -36,6 +37,7 @@ const Home = ({ islogin, logout, category,
                 setTitle={(title) => setTitle(title)}
                 setBranch={(branch) => setBranch(branch)}
                 branch={branch}
+                
             />
             <footer id="footer">
                 <FooterTop />

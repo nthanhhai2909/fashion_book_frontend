@@ -23,9 +23,20 @@ const publisher = (state = { data: [] }, action) => {
         default: return state
     }
 }
+const author = (state = {data: []}, action) => {
+    switch(action.type) {
+        case homeTypes.SET_AUTHOR: {
+            return {
+                ...state,
+                data: action.data
+            }
+        }
+        default: return state
+    }
+}
 
 const book = (state = {
-    data: [], page: 1, totalpage: null, title: 'ALL BOOK',
+    data: [], page: 1, totalpage: null, title: 'ALL BOOK', searchtext: '',
     sortType: sortTypes.SORT_DAY_DECREASED, sortOrder: -1
 }, action) => {
     switch (action.type) {
@@ -76,6 +87,12 @@ const book = (state = {
             return { data: [], page: 1, totalpage: null, title: 'ALL BOOK',
             sortType: sortTypes.SORT_DAY_DECREASED, sortOrder: -1}
         }
+        case homeTypes.SET_SEARCH_TEXT: {
+            return {
+                ...state, 
+                searchtext: action.searchtext
+            }
+        }
         
         default: return state
     }
@@ -83,5 +100,6 @@ const book = (state = {
 export default combineReducers({
     category,
     publisher,
-    book
+    book, 
+    author
 })

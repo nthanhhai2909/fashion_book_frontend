@@ -17,6 +17,7 @@ class HomeContainer extends React.Component {
         this.props.homeActions.getCategory()
         this.props.homeActions.getPublisher()
         this.props.homeActions.getBook()
+        this.props.homeActions.getAuthor()
     }
     componentWillReceiveProps(nextProps) {
         if(nextProps.page !== this.props.page) {
@@ -49,6 +50,7 @@ class HomeContainer extends React.Component {
                         setTitle={(title) => this.props.homeActions.setTitle(title)}
                         setBranch={(branch) => this.props.homeActions.setBranch(branch)}
                         branch={this.props.branch}
+                        setSearchText={(value) => this.props.homeActions.setSearchText(value)}
                     />
                 </div>
             )
@@ -64,6 +66,7 @@ const mapStateToProps = state => ({
     islogin: state.userReducers.login.islogin,
     category: state.homeReducers.category.data,
     publisher: state.homeReducers.publisher.data,
+    author: state.homeReducers.author.data,
     book: state.homeReducers.book.data, 
     totalpage: state.homeReducers.book.totalpage,
     page: state.homeReducers.book.page, 

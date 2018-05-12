@@ -22,6 +22,16 @@ export const getPublisher = () => async (dispatch, getState) => {
     dispatch(setPublisher(res.data.data))
 }
 
+export const getAuthor = () => async (dispatch, getState) => {
+    let res
+    try {
+        res = await axios.get('http://localhost:8080/author/all')
+    }
+    catch(err) {
+        return
+    }
+    dispatch(setAuthor(res.data.data))
+}
 export const getBook = () => async (dispatch, getState) => {
     let res
     try {
@@ -59,6 +69,10 @@ export const setPublisher = (data) => ({
     data
 })
 
+export const setAuthor = (data) => ({
+    type: homeTypes.SET_AUTHOR,
+    data
+})
 export const backPage = () => (dispatch, getState) => {
     let page = getState().homeReducers.book.page
     if(page > 1) {
@@ -110,7 +124,8 @@ export const setSortType = (sortType) => async (dispatch, getState) => {
             page: 1,
             range: getState().homeReducers.book.range,
             sorttype: sorttype,
-            sortorder: sortorder
+            sortorder: sortorder,
+            searchtext: getState
         })
     }
     catch (err) {
@@ -181,4 +196,8 @@ export const setRange = (range) => ({
  export const setTitle = (title) => ({
      type: homeTypes.SET_NAME_TITLE_ITEM, 
      title
+ })
+ export const setSearchText = (searchtext) => ({
+     type: homeTypes.SET_SEARCH_TEXT,
+     searchtext
  })

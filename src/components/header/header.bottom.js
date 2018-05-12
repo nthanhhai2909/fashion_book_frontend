@@ -86,7 +86,11 @@ class HeaderBottom extends Component {
                         </div>
                         <div className="col-sm-4">
                             <div className="search_box pull-right">
-                                <input type="text" placeholder="Search" />
+                                <input 
+                                type="text" 
+                                placeholder="Search"
+                                onChange={(e) => this.props.setSearchText(e.target.value)}
+                                />
                             </div>
                         </div>
                         <div className="col-sm-2">
