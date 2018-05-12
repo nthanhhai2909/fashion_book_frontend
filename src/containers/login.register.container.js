@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import LoginRegister from '../components/login.register/login.register'
 import * as userActions from '../actions/user.action'
-
+import * as homeActions from '../actions/home.action'
 class LoginRegisterContainer extends Component {
     constructor(props) {
         super(props)
@@ -130,6 +130,10 @@ class LoginRegisterContainer extends Component {
                     loginSubmit={() => this.loginSubmit()}
                     islogin={this.props.islogin}
                     logout={() => this.props.actions.logout()}
+                    sortType={this.props.sortType}
+                    setSortType={(value) => this.props.homeActions.setSortType(value)}
+                    setRangeType={(range) => this.props.homeActions.setRangeType(range)}
+                    setSearchText={(value) => this.props.homeActions.setSearchText(value)}
                 />
             </div>
         )
@@ -143,7 +147,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
     return ({
-        actions: bindActionCreators(userActions, dispatch)
+        actions: bindActionCreators(userActions, dispatch),
+        homeActions: bindActionCreators(homeActions, dispatch)
     })
 }
 export default connect(

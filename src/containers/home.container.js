@@ -54,6 +54,7 @@ class HomeContainer extends React.Component {
                         author={this.props.author}
                         setIDBranch={(id) => this.props.homeActions.setIDBranch(id)}
                         branchClick={(branch, id) => this.props.homeActions.branchClick(branch, id)}
+                        history={this.props.history}
                     />
                 </div>
             )

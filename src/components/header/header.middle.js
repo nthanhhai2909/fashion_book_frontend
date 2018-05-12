@@ -41,7 +41,14 @@ class HeaderMiddle extends Component {
             )
         }
     } 
-
+    handleProfile = () => {
+        if(this.state.email === 'Account') {
+            return
+        }
+        else {
+            this.props.history.push('/profile/' + this.state.email)
+        }
+    }
     render() {
         return (
             <div className="header-middle">
@@ -78,7 +85,8 @@ class HeaderMiddle extends Component {
                         <div className="col-sm-8">
                             <div className="shop-menu pull-right">
                                 <ul className="nav navbar-nav">
-                                    <li><Link to={"/profile/" + this.state.email}><i className="fa fa-user"></i> {this.state.email}</Link></li>
+                                    <li onClick={() => this.handleProfile()
+                                    }><Link to={"/"}><i className="fa fa-user"></i> {this.state.email}</Link></li>
                                     <li><a href="#"><i className="fa fa-star"></i> Wishlist</a></li>
                                     <li><a href="checkout.html"><i className="fa fa-crosshairs"></i> Checkout</a></li>
                                     <li><a href="cart.html"><i className="fa fa-shopping-cart"></i> Cart</a></li>

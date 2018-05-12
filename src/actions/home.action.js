@@ -138,7 +138,8 @@ export const setSortType = (sortType) => async (dispatch, getState) => {
             sorttype: sorttype,
             sortorder: sortorder,
             searchtext: getState,
-            id: getState().homeReducers.book.id
+            id: getState().homeReducers.book.id,
+            searchtext: undefined
         })
     }
     catch (err) {
@@ -198,7 +199,8 @@ export const setRangeType = (range) => async (dispatch, getState) => {
             range: range,
             sorttype: sorttype,
             sortorder: sortorder,
-            id: getState().homeReducers.book.id
+            id: getState().homeReducers.book.id,
+            searchtext: undefined
         })
     }
     catch (err) {
@@ -243,13 +245,73 @@ export const setRange = (range) => ({
             range: undefined,
             sorttype: undefined,
             sortorder: undefined,
-            id: id
+            id: id,
+            searchtext: undefined
         })
     }
     catch (err) {
         return
     }
+    dispatch(setSearchText(''))
     dispatch(setBook(res.data.data))
     dispatch(setTotalPage(res.data.totalPage))
     
  }
+
+ export const searchTextSubmit = (searchtext) => async(dispatch, getState) => {
+    dispatch(setPage(1))
+    let sorttype = 'release_date'
+    let sortorder = '-1'
+    let sortType = getState().homeReducers.book.sortType
+    if (sortType === sortTypes.SORT_DAY_DECREASED) {
+        sorttype = 'release_date'
+        sortorder = '-1'
+    } else if (sortType === sortTypes.SORT_DAY_INCREASED) {
+        sorttype = 'release_date'
+        sortorder = '1'
+    } else if (sortType === sortTypes.SORT_PRICE_DECREASED) {
+        sorttype = 'price'
+        sortorder = '-1'
+    } else if (sortType === sortTypes.SORT_PRICE_INCREASED) {
+        sorttype = 'price'
+        sortorder = '1'
+    } else if (sortType === sortTypes.SORT_SALES_DECREASED) {
+        sorttype = 'sales'
+        sortorder = '-1'
+    } else if (sortType === sortTypes.SORT_SALES_INCREASED) {
+        sorttype = 'sales'
+        sortorder = '1'
+    } else if (sortType === sortTypes.SORT_VIEWS_DECREASED) {
+        sorttype = 'view_counts'
+        sortorder = '-1'
+    } else if (sortType === sortTypes.SORT_VIEWS_INCREASED) {
+        sorttype = 'view_counts'
+        sortorder = '1'
+    }
+    let branch = getState().homeReducers.book.branch
+    let _link = 'http://localhost:8080/book/allbook'
+    if(branch === 'category') { 
+        _link = 'http://localhost:8080/book/category'
+    } else if (branch === 'publisher') {
+        _link = 'http://localhost:8080/book/publisher'
+    } else if(branch === 'author') {
+        _link = 'http://localhost:8080/book/author'
+    }
+    let res
+    try {
+        res = await axios.post(_link, {
+            page: 1,
+            range: getState().homeReducers.book.range,
+            sorttype: sorttype,
+            sortorder: sortorder,
+            id: getState().homeReducers.book.id,
+            searchtext: searchtext
+        })
+    }
+    catch (err) {
+        console.log(err.response)
+        return
+    }
+    dispatch(setBook(res.data.data))
+    dispatch(setTotalPage(res.data.totalPage))
+ } 

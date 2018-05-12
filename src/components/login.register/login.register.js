@@ -8,14 +8,19 @@ import FooterBottom from '../footer/footer.bottom'
 import ContentLoginRegister from './content.login.register'
 const Home = ({ setEmailogin, setPasswordlogin, setEmail,
     setFirstname, setLastname, setAddress, setPhone, setPassword, setConfirm,
-    notificationRegister, notificationLogin, registerSubmit, loginSubmit, islogin, logout }) => (
+    notificationRegister,notificationLogin, registerSubmit, 
+     loginSubmit, islogin, logout, sortType, setSortType, setSearchText}) => (
         <div>
             <header id="header">
                 <HeaderTop />
                 <HeaderMiddle
-                islogin={islogin} 
-                logout={() => logout}/>
-                <HeaderBottom />
+                    islogin={islogin}
+                    logout={() => logout} />
+                <HeaderBottom
+                    sortType={sortType}
+                    setSortType={(value) => setSortType(value)}
+                    setSearchText={(value) => setSearchText(value)}
+                />
             </header>
             <ContentLoginRegister
                 setEmailogin={(value) => setEmailogin(value)}
@@ -23,13 +28,13 @@ const Home = ({ setEmailogin, setPasswordlogin, setEmail,
                 setEmail={(value) => setEmail(value)}
                 setFirstname={(value) => setFirstname(value)}
                 setLastname={(value) => setLastname(value)}
-                setAddress={(value) => setAddress(value)} 
-                setPhone={(value) => setPhone(value)} 
-                setPassword={(value) => setPassword(value)} 
+                setAddress={(value) => setAddress(value)}
+                setPhone={(value) => setPhone(value)}
+                setPassword={(value) => setPassword(value)}
                 setConfirm={(value) => setConfirm(value)}
                 notificationRegister={notificationRegister}
                 notificationLogin={notificationLogin}
-                registerSubmit={()=> registerSubmit()}
+                registerSubmit={() => registerSubmit()}
                 loginSubmit={() => loginSubmit()}
             />
             <footer id="footer">

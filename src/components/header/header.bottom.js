@@ -6,7 +6,7 @@ class HeaderBottom extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            titleSort: null,
+            titleSort: 'Sort',
             listActionSort: []
         }
     }

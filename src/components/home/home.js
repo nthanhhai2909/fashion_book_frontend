@@ -10,13 +10,14 @@ const Home = ({ islogin, logout, category,
     publisher, book, totalpage, backPage,
     nextPage, setPage, page, sortType, setSortType,
     setRangeType, title, setTitle, setBranch, branch, 
-    setSearchText, author, setIDBranch, branchClick }) => (
+    setSearchText, author, setIDBranch, branchClick, history }) => (
         <div>
             <header id="header">
                 <HeaderTop />
                 <HeaderMiddle
                     islogin={islogin}
                     logout={() => logout()}
+                    history={history}
                 />
                 <HeaderBottom
                     sortType={sortType}
