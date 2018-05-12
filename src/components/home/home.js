@@ -10,7 +10,7 @@ const Home = ({ islogin, logout, category,
     publisher, book, totalpage, backPage,
     nextPage, setPage, page, sortType, setSortType,
     setRangeType, title, setTitle, setBranch, branch, 
-    setSearchText, author, setIDBranch }) => (
+    setSearchText, author, setIDBranch, branchClick }) => (
         <div>
             <header id="header">
                 <HeaderTop />
@@ -40,6 +40,7 @@ const Home = ({ islogin, logout, category,
                 branch={branch}
                 author={author}
                 setIDBranch={(id) => setIDBranch(id)}
+                branchClick={(branch, id) => branchClick(branch, id)}
             />
             <footer id="footer">
                 <FooterTop />

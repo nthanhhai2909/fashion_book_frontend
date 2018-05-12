@@ -191,7 +191,6 @@ export const setRangeType = (range) => async (dispatch, getState) => {
     } else if(branch === 'author') {
         _link = 'http://localhost:8080/book/author'
     }
-    
     let res
     try {
         res = await axios.post(_link, {
@@ -203,6 +202,7 @@ export const setRangeType = (range) => async (dispatch, getState) => {
         })
     }
     catch (err) {
+        console.log(err.response)
         return
     }
     dispatch(setRange(range))
@@ -226,3 +226,30 @@ export const setRange = (range) => ({
      type: homeTypes.SET_SEARCH_TEXT,
      searchtext
  })
+
+ export const branchClick = (branch, id) => async (dispatch, getState)=> {
+    let _link = 'http://localhost:8080/book/allbook'
+    if(branch === 'category') { 
+        _link = 'http://localhost:8080/book/category'
+    } else if (branch === 'publisher') {
+        _link = 'http://localhost:8080/book/publisher'
+    } else if(branch === 'author') {
+        _link = 'http://localhost:8080/book/author'
+    }
+    let res
+    try {
+        res = await axios.post(_link, {
+            page: 1,
+            range: undefined,
+            sorttype: undefined,
+            sortorder: undefined,
+            id: id
+        })
+    }
+    catch (err) {
+        return
+    }
+    dispatch(setBook(res.data.data))
+    dispatch(setTotalPage(res.data.totalPage))
+    
+ }
