@@ -29,6 +29,7 @@ class ProductDetail extends Component {
                     mproductDetail={this.props.mproductDetail}
                     nameCategory={this.props.nameCategory}
                     namePublicsher={this.props.namePublicsher}
+                    bookrelated={this.props.bookrelated}
                 />
                 <footer id="footer">
                     <FooterTop />

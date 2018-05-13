@@ -13,6 +13,7 @@ class ProductDetailContainer extends Component {
         this.props.homeActions.getCategory()
         this.props.homeActions.getPublisher()
         this.props.productActions.getBookDetail(this.props.match.params.id)
+        this.props.productActions.getBookRelated(this.props.match.params.id)
         
     }
     componentWillReceiveProps(nextProps) {
@@ -38,6 +39,7 @@ class ProductDetailContainer extends Component {
                         sortType={this.props.sortType}
                         setSortType={(value) => this.props.homeActions.setSortType(value)}
                         searchTextSubmit={() => this.props.homeActions.searchTextSubmit()}
+                        bookrelated={this.props.bookrelated}
                     />
                 </div>
             )
@@ -58,6 +60,7 @@ const mapStateToProps = state => ({
     nameCategory: state.productReducers.product.nameCategory,
     namePublicsher: state.productReducers.product.namePublicsher,
     islogin: state.userReducers.login.islogin,
+    bookrelated: state.productReducers.product.bookrelated
 })
 const mapDispatchToProps = dispatch => {
     return ({
