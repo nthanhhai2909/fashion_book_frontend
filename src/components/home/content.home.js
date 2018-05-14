@@ -15,6 +15,15 @@ class ContentHome extends Component {
         }
         this.setState({ pagination: tmp })
     }
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.totalpage !== this.props.totalpage) {
+            let tmp = []
+            for (let i = 1; i <= nextProps.totalpage; i++) {
+                tmp.push(i);
+            }
+            this.setState({ pagination: tmp })
+        }
+    }
     renderPagination() {
         if (this.state.pagination.length === 0) {
             return null
