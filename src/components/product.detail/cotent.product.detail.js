@@ -268,7 +268,7 @@ class ContentProductDetail extends Component {
                                                 <div className="content-conment">
                                                     {this.props.comment.map((element, index) => {
                                                         return (
-                                                            <p><span>{element.name}</span>: {element.comment}</p>
+                                                            <p><span>{element.name}:</span> {element.comment}</p>
                                                         )
                                                     })}
                                                 </div>
