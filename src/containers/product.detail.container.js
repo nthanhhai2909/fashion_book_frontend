@@ -24,12 +24,14 @@ class ProductDetailContainer extends Component {
         if(nextProps.mproductDetail !== null ) {
             this.props.productActions.getNameCategoryByID(nextProps.mproductDetail.id_category)
             this.props.productActions.getNamePubliserByID(nextProps.mproductDetail.id_nsx)
+            this.props.productActions.getNameAuthorByID(nextProps.mproductDetail.id_author)
+            
         }
 
     }
     
     render() {
-        if(this.props.mproductDetail && this.props.nameCategory && this.props.namePublicsher) {
+        if(this.props.mproductDetail && this.props.nameCategory && this.props.namePublicsher && this.props.nameAuthor) {
             return (
                 <div>
                     <ProductDetail
@@ -48,6 +50,7 @@ class ProductDetailContainer extends Component {
                         id_book={this.props.match.params.id}
                         submitComment={(name, email, comment, id_book) => this.props.productActions.submitComment(name, email, comment, id_book)}
                         comment={this.props.comment}
+                        nameAuthor={this.props.nameAuthor}
                     />
                 </div>
             )
@@ -67,6 +70,7 @@ const mapStateToProps = state => ({
     mproductDetail: state.productReducers.product.productDetail,
     nameCategory: state.productReducers.product.nameCategory,
     namePublicsher: state.productReducers.product.namePublicsher,
+    nameAuthor: state.productReducers.product.nameAuthor,
     islogin: state.userReducers.login.islogin,
     bookrelated: state.productReducers.product.bookrelated,
     comment: state.productReducers.product.comment

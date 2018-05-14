@@ -43,6 +43,17 @@ export const getNamePubliserByID = (id) => async (dispatch) => {
 
     dispatch(setNamePubliser(res.data.name))
 }
+export const getNameAuthorByID = (id) => async (dispatch) => {
+    let res
+    try {
+        res = await axios.get('http://localhost:8080/author/name/' + id)
+    }
+    catch (err) {
+        return
+    }
+
+    dispatch(setNameAuthor(res.data.name))
+}
 export const setProductDetail = (productDetail) => ({
     type: productTypes.SET_PRODUCT_DETAIL,
     productDetail
@@ -59,6 +70,10 @@ export const setNamePubliser = (name) => ({
 export const setBookRelated = (bookrelated) => ({
     type: productTypes.SET_BOOK_RELATED,
     bookrelated
+})
+export const setNameAuthor = (name) => ({
+    type: productTypes.SET_NAME_AUTHOR,
+    name
 })
 
 export const submitComment = (name, email, comment, id_book) => async (dispatch, getState) => {

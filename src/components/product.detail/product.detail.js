@@ -38,6 +38,7 @@ class ProductDetail extends Component {
                     submitComment={(name, email, comment, id_book) =>
                         this.props.submitComment(name, email, comment, id_book)}
                     comment={this.props.comment}
+                    nameAuthor={this.props.nameAuthor}
                 />
                 <footer id="footer">
                     <FooterTop />

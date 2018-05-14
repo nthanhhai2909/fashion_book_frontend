@@ -84,7 +84,7 @@ class ContentProductDetail extends Component {
                                         <ul className="nav nav-pills nav-stacked">
                                             {this.props.publisher.map((element, index) => {
                                                 return (
-                                                    <li><a href="#"> <span class="pull-right"></span>{element.name}</a></li>
+                                                    <li><a href="#"> <span className="pull-right"></span>{element.name}</a></li>
                                                 )
                                             })}
                                         </ul>
@@ -148,6 +148,7 @@ class ContentProductDetail extends Component {
                                         <p><b>Category:</b> {this.props.nameCategory}</p>
                                         <p><b>Release date </b> {new Date(this.props.mproductDetail.release_date).toDateString("yyyy-MM-dd")}</p>
                                         <p><b>Publisher:</b> {this.props.namePublicsher}</p>
+                                        <p><b>Author:</b> {this.props.nameAuthor}</p>
                                         <a href=""><img src="/assets/images/product-details/share.png" className="share img-responsive" alt="" /></a>
                                     </div>
                                 </div>
