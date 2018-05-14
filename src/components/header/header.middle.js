@@ -32,7 +32,7 @@ class HeaderMiddle extends Component {
             return (
                 <li
                 onClick={() => this.props.logout()}
-                ><Link to="/"><i className="fa fa-lock"></i>Logout</Link></li>
+                ><a><i className="fa fa-lock"></i>Logout</a></li>
             )
         }
         else {

@@ -7,6 +7,9 @@ import FooterMiddle from '../footer/footer.middle'
 import FooterBottom from '../footer/footer.bottom'
 import ContentProductDetail from './cotent.product.detail'
 class ProductDetail extends Component {
+    constructor(props) {
+        super(props)
+    }
     render() {
         return (
             <div>
@@ -14,7 +17,7 @@ class ProductDetail extends Component {
                     <HeaderTop />
                     <HeaderMiddle
                         islogin={this.props.islogin}
-                        logout={() => this.props.logout}
+                        logout={() => this.props.logout()}
                     />
                     <HeaderBottom
                         sortType={this.props.sortType}
@@ -30,6 +33,11 @@ class ProductDetail extends Component {
                     nameCategory={this.props.nameCategory}
                     namePublicsher={this.props.namePublicsher}
                     bookrelated={this.props.bookrelated}
+                    islogin={this.props.islogin}
+                    id_book={this.props.id_book}
+                    submitComment={(name, email, comment, id_book) =>
+                        this.props.submitComment(name, email, comment, id_book)}
+                    comment={this.props.comment}
                 />
                 <footer id="footer">
                     <FooterTop />

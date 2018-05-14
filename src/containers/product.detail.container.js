@@ -4,16 +4,20 @@ import { bindActionCreators } from 'redux'
 import ProductDetail from '../components/product.detail/product.detail'
 import * as productActions from '../actions/product.action'
 import * as homeActions from '../actions/home.action'
+import * as userActions from '../actions/user.action'
 import Loading from '../components/loading/loading'
 class ProductDetailContainer extends Component {
     constructor(props) {
         super(props)
+
     }
     componentWillMount() {
+        this.props.actions.auth()
         this.props.homeActions.getCategory()
         this.props.homeActions.getPublisher()
         this.props.productActions.getBookDetail(this.props.match.params.id)
         this.props.productActions.getBookRelated(this.props.match.params.id)
+        this.props.productActions.getCommentByIDBook(this.props.match.params.id)
         
     }
     componentWillReceiveProps(nextProps) {
@@ -23,7 +27,7 @@ class ProductDetailContainer extends Component {
         }
 
     }
-
+    
     render() {
         if(this.props.mproductDetail && this.props.nameCategory && this.props.namePublicsher) {
             return (
@@ -40,6 +44,10 @@ class ProductDetailContainer extends Component {
                         setSortType={(value) => this.props.homeActions.setSortType(value)}
                         searchTextSubmit={() => this.props.homeActions.searchTextSubmit()}
                         bookrelated={this.props.bookrelated}
+                        logout={() => this.props.actions.logout()}
+                        id_book={this.props.match.params.id}
+                        submitComment={(name, email, comment, id_book) => this.props.productActions.submitComment(name, email, comment, id_book)}
+                        comment={this.props.comment}
                     />
                 </div>
             )
@@ -60,10 +68,12 @@ const mapStateToProps = state => ({
     nameCategory: state.productReducers.product.nameCategory,
     namePublicsher: state.productReducers.product.namePublicsher,
     islogin: state.userReducers.login.islogin,
-    bookrelated: state.productReducers.product.bookrelated
+    bookrelated: state.productReducers.product.bookrelated,
+    comment: state.productReducers.product.comment
 })
 const mapDispatchToProps = dispatch => {
     return ({
+        actions: bindActionCreators(userActions, dispatch),
         homeActions: bindActionCreators(homeActions, dispatch),
         productActions: bindActionCreators(productActions, dispatch)
     })

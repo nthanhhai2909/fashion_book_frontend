@@ -26,6 +26,16 @@ class LoginRegisterContainer extends Component {
     componentWillMount() {
         this.props.actions.auth()
     }
+    isvalidFirstName = (firstName) => {
+        if(firstName === '')
+            return false
+        return true
+    }
+    isvalidLastName = (lastname) => {
+        if(lastname === '')
+            return false
+        return true
+    }
     isvalidPassword = (password) => {
         if (password.length < 6)
             return false
@@ -56,6 +66,18 @@ class LoginRegisterContainer extends Component {
         }
         if (!this.isvalidConfirm(this.state.password, this.state.confirm)) {
             this.setState({ notificationRegister: 'Confirm invalid' })
+            return
+        } else {
+            this.setState({ notificationRegister: '' })
+        }
+        if (!this.isvalidFirstName(this.state.firstname)) {
+            this.setState({ notificationRegister: 'Firstname invalid' })
+            return
+        } else {
+            this.setState({ notificationRegister: '' })
+        }
+        if (!this.isvalidLastName(this.state.lastname)) {
+            this.setState({ notificationRegister: 'Lastname invalid' })
             return
         } else {
             this.setState({ notificationRegister: '' })

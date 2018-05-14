@@ -1449,6 +1449,7 @@ h2.title {
 
 }
 
+
 .signup-form {
   
 }
@@ -1925,7 +1926,6 @@ h2.title {
 .register-req p {
   margin-bottom: 0
 }
-
 
 
 .shopper-info p, 
@@ -2624,4 +2624,29 @@ h2.title {
 .pagination-custom {
   margin: auto;
   color: red;
+}
+
+.comment {
+  text-align: center;
+}
+.content-conment {
+  line-height: 15px;
+  font-size: 15px;
+  max-height: 300px;
+  min-height: 300px;
+  overflow-x: hidden;
+}
+.content-conment p {
+  background: wheat;
+  margin-bottom: 5px;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  overflow-wrap: inherit;
+  min-height: 40px;
+}
+.content-conment p span {
+  color: #5BBCEC;
+  margin-right: 10px
 }
