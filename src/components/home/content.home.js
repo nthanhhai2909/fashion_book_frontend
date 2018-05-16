@@ -149,10 +149,12 @@ class ContentHome extends Component {
                                 {this.props.book.map((element, index) => {
                                     return (
                                         <ProductItem
+                                            book={element}
                                             urlImg={element.img}
                                             price={element.price}
                                             describe={element.describe}
                                             id={element._id}
+                                            addToCart={(product) => this.props.addToCart(product)}
                                         />
                                     )
                                 })}

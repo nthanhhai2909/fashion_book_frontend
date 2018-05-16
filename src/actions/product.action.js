@@ -110,3 +110,11 @@ export const setComment = (data) => ({
     type: productTypes.SET_COMMENT,
     data
 })
+
+export const addToCart = (product) => async(dispatch, getState) => {
+    if(getState().userReducers.login.islogin){
+        
+    } else {
+        storeConfig.addProductToCart(product)
+    }
+}

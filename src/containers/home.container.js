@@ -5,8 +5,10 @@ import axios from 'axios'
 import Home from '../components/home/home'
 import * as userActions from '../actions/user.action'
 import * as homeActions from '../actions/home.action'
+import * as productActions from '../actions/product.action'
 import Loading from '../components/loading/loading'
 import {sortTypes} from '../constants/action.types'
+import localStore from '../config/storage.config'
 class HomeContainer extends React.Component {
     constructor(props) {
         super(props)
@@ -54,6 +56,7 @@ class HomeContainer extends React.Component {
                         branchClick={(branch, id) => this.props.homeActions.branchClick(branch, id)}
                         history={this.props.history}
                         searchTextSubmit={() => this.props.homeActions.searchTextSubmit()}
+                        addToCart={(product) => this.props.productActions.addToCart(product)}
                     />
                 </div>
             )
@@ -81,7 +84,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>{
     return ({
         actions: bindActionCreators(userActions, dispatch),
-        homeActions: bindActionCreators(homeActions, dispatch)
+        homeActions: bindActionCreators(homeActions, dispatch),
+        productActions: bindActionCreators(productActions, dispatch)
     })
 }
 export default connect(

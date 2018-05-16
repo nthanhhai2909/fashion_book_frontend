@@ -9,7 +9,9 @@ class ContentProductDetail extends Component {
             name: '',
             email: '',
             notificationComment: '',
-            comment: ''
+            comment: '',
+            quantity: 1,
+            noti:''
         }
     }
     componentWillMount() {
@@ -19,15 +21,15 @@ class ContentProductDetail extends Component {
                 email: storeConfig.getUser().email
             })
         }
-        else{
+        else {
             this.setState({
                 name: '',
-               email: ''
+                email: ''
             })
         }
     }
     componentWillReceiveProps(nextProps) {
-        if(nextProps.islogin === false){
+        if (nextProps.islogin === false) {
             this.setState({
                 name: '',
                 email: ''
@@ -40,21 +42,33 @@ class ContentProductDetail extends Component {
         }
     }
     submitComment = () => {
-        if(this.state.name === ''){
-            this.setState({notificationComment: 'Name must not be blank '})
+        if (this.state.name === '') {
+            this.setState({ notificationComment: 'Name must not be blank ' })
             return
         } else {
-            this.setState({notificationComment: ''})
+            this.setState({ notificationComment: '' })
         }
-        if(this.state.comment === ''){
-            this.setState({notificationComment: 'Comment must not be blank '})
+        if (this.state.comment === '') {
+            this.setState({ notificationComment: 'Comment must not be blank ' })
             return
         } else {
-            this.setState({notificationComment: ''})
+            this.setState({ notificationComment: '' })
         }
         this.props.submitComment(this.state.name, this.state.email, this.state.comment, this.props.id_book)
-        this.setState({comment: ''})
+        this.setState({ comment: '' })
 
+    }
+    submitOrder = () => {
+        if(this.state.quantity < 0) {
+            this.setState({noti: 'Quantity invalid'})
+            return
+        }
+        else {
+            this.setState({noti: ''})
+        }
+        let product = this.props.mproductDetail
+        product.count = this.state.quantity
+        this.props.addToCart(product)
     }
     render() {
         return (
@@ -136,15 +150,24 @@ class ContentProductDetail extends Component {
                                         <h2>{this.props.mproductDetail.name}</h2>
                                         <p>Web ID: {this.props.mproductDetail._id}</p>
                                         <img src="images/product-details/rating.png" alt="" />
+                                        
                                         <span>
                                             <span>US ${this.props.mproductDetail.price}</span>
-                                            <label>Quantity:</label>
-                                            <input type="text" />
-                                            <button type="button" className="btn btn-fefault cart">
+                                            Quantity
+                                            <input
+                                                type="number"
+                                                min="0"  
+                                                onChange={e => this.setState({quantity: e.target.value})}    
+                                                value={this.state.quantity}
+                                            />
+                                            <button
+                                                onClick={() =>  this.submitOrder() }
+                                                type="button" className="btn btn-fefault cart">
                                                 <i className="fa fa-shopping-cart"></i>
                                                 Add to cart
                                         </button>
                                         </span>
+                                        <p>{this.state.noti}</p>
                                         <p><b>Category:</b> {this.props.nameCategory}</p>
                                         <p><b>Release date </b> {new Date(this.props.mproductDetail.release_date).toDateString("yyyy-MM-dd")}</p>
                                         <p><b>Publisher:</b> {this.props.namePublicsher}</p>
@@ -273,7 +296,7 @@ class ContentProductDetail extends Component {
                                                     })}
                                                 </div>
                                                 <hr />
-                                                <p style={{color: "#5BBCEC"}}>{this.state.notificationComment}</p>
+                                                <p style={{ color: "#5BBCEC" }}>{this.state.notificationComment}</p>
                                                 <p><b>Write Your Review</b></p>
 
                                                 <form action="#">
@@ -281,7 +304,7 @@ class ContentProductDetail extends Component {
                                                         <input type="text"
                                                             placeholder="Your Name"
                                                             value={this.state.name}
-                                                            onChange={(e) => this.setState({name:e.target.value})}
+                                                            onChange={(e) => this.setState({ name: e.target.value })}
                                                         />
                                                         <input
                                                             type="email"
@@ -297,7 +320,7 @@ class ContentProductDetail extends Component {
                                                         type="button"
                                                         className="btn btn-default pull-right"
                                                         onClick={() => this.submitComment()}
-                                                        >                                           
+                                                    >
                                                         Submit
                                             </button>
                                                 </form>

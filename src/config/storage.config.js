@@ -1,3 +1,4 @@
+
 exports.setToken = (token) => {
     localStorage.setItem('token', token)
 }
@@ -24,4 +25,24 @@ exports.getUser = () => {
 }
 exports.clear = () => {
     localStorage.clear()
+}
+exports.getCart = () => {
+    if(localStorage.getItem('cart') === null)
+        return []
+    return localStorage.getItem('cart')
+}
+exports.addProductToCart = (product) => {
+    let cart
+    if(localStorage.getItem('cart') !== null){
+        cart = JSON.parse(localStorage.getItem('cart'))
+    } else {
+        cart = []
+    }
+    let index = cart.findIndex(element => product._id === element._id)
+    if(index === -1) {
+        cart = [...cart, product]
+    } else {
+        cart[index].count = parseInt(cart[index].count) + parseInt(product.count)
+    }
+    localStorage.setItem('cart', JSON.stringify(cart))
 }

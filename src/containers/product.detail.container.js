@@ -51,6 +51,7 @@ class ProductDetailContainer extends Component {
                         submitComment={(name, email, comment, id_book) => this.props.productActions.submitComment(name, email, comment, id_book)}
                         comment={this.props.comment}
                         nameAuthor={this.props.nameAuthor}
+                        addToCart={(product) => this.props.productActions.addToCart(product)}
                     />
                 </div>
             )
