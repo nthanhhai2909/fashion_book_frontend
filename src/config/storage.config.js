@@ -28,8 +28,11 @@ exports.clear = () => {
 }
 exports.getCart = () => {
     if(localStorage.getItem('cart') === null)
-        return []
+        return null
     return localStorage.getItem('cart')
+}
+exports.removeCart = () => {
+    localStorage.removeItem('cart')
 }
 exports.addProductToCart = (product) => {
     let cart

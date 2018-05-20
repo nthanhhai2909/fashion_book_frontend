@@ -1,10 +1,27 @@
 import { userTypes } from '../constants/action.types'
 import storeConfig from '../config/storage.config'
 import axios from 'axios'
-export const loginSuccess = (token, user) => (dispatch, getState) => {
+export const loginSuccess = (token, user) => async (dispatch, getState) => {
     storeConfig.setUser(user)
     storeConfig.setToken(token)
     dispatch(setLoginSuccess())
+    // process cart
+    let cart = storeConfig.getCart()
+    
+    if(cart !== null) {
+        let res
+        try {
+            res = await axios.post('http://localhost:8080/cart/addtocard', {
+                id: 'add_new',
+                products: cart
+            })
+        }
+        catch (err) {
+            console.log(JSON.stringify(err.response))
+            return
+        }
+        storeConfig.removeCart()
+    }
 }
 
 export const auth = () => async (dispatch, getState)  => {
@@ -45,7 +62,7 @@ export const setLoginSuccess = () => ({
 })
 export const setLoginFail = () => ({
     type: userTypes.LOGIN_FAIL,
-    data: 'login success'   
+    data: 'login fail'   
 })
 
 export const forgotEmailSuccess = () => ({

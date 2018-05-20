@@ -78,7 +78,7 @@ export const setNameAuthor = (name) => ({
 
 export const submitComment = (name, email, comment, id_book) => async (dispatch, getState) => {
     let id = null
-    if(storeConfig.getUser() && storeConfig.getUser().id && storeConfig.getUser().id  )
+    if (storeConfig.getUser() && storeConfig.getUser().id && storeConfig.getUser().id)
         id = storeConfig.getUser().id
     let res
     try {
@@ -89,7 +89,7 @@ export const submitComment = (name, email, comment, id_book) => async (dispatch,
             comment: comment
         })
     }
-    catch(err) {
+    catch (err) {
         console.log(JSON.stringify(err.response))
         return
     }
@@ -100,7 +100,7 @@ export const getCommentByIDBook = (id) => async (dispatch, getState) => {
     try {
         res = await axios.get('http://localhost:8080/comment/' + id)
     }
-    catch(err) {
+    catch (err) {
         console.log(JSON.stringify(err.response))
         return
     }
@@ -111,9 +111,19 @@ export const setComment = (data) => ({
     data
 })
 
-export const addToCart = (product) => async(dispatch, getState) => {
-    if(getState().userReducers.login.islogin){
-        
+export const addToCart = (product) => async (dispatch, getState) => {
+    if (getState().userReducers.login.islogin) {
+        let res
+        try {
+            res = await axios.post('http://localhost:8080/cart/addtocard', {
+                id: product._id,
+                products: product
+            })
+        }
+        catch (err) {
+            console.log(JSON.stringify(err.response))
+            return
+        }
     } else {
         storeConfig.addProductToCart(product)
     }
