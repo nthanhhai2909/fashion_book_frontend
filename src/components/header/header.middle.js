@@ -30,7 +30,7 @@ class HeaderMiddle extends Component {
     handlelogin = () => {
         if(this.props.islogin) {
             return (
-                <li
+                <li className="btn-custom"
                 onClick={() => this.props.logout()}
                 ><a><i className="fa fa-lock"></i>Logout</a></li>
             )

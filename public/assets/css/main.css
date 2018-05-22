@@ -13,6 +13,10 @@ body {
   font-weight:400px;
 }
 
+.btn-custom {
+  cursor: pointer;
+}
+
 ul li {
   list-style: none;
 }
