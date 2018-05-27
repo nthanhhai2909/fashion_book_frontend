@@ -11,10 +11,16 @@ class ContentProductDetail extends Component {
             notificationComment: '',
             comment: '',
             quantity: 1,
-            noti:''
+            noti:'',
+            pagination: []
         }
     }
     componentWillMount() {
+        let tmp = []
+        for (let i = 1; i <= this.props.totalpage; i++) {
+            tmp.push(i);
+        }
+        this.setState({ pagination: tmp })
         if (storeConfig.getUser() !== null) {
             this.setState({
                 name: storeConfig.getUser().firstName,
@@ -29,11 +35,46 @@ class ContentProductDetail extends Component {
         }
     }
     componentWillReceiveProps(nextProps) {
+        if (nextProps.totalpage !== this.props.totalpage) {
+            let tmp = []
+            for (let i = 1; i <= nextProps.totalpage; i++) {
+                tmp.push(i);
+            }
+            this.setState({ pagination: tmp })
+        }
         if (nextProps.islogin === false) {
             this.setState({
                 name: '',
                 email: ''
             })
+        }
+    }
+    renderPagination() {
+        if (this.state.pagination.length === 0) {
+            return null
+        }
+        else {
+            return (
+                <ul className="pagination pagination-custom">
+                    <li onClick={() => this.props.backPage()}
+                    ><a >&laquo;</a></li>
+                    {
+                        this.state.pagination.map((element, index) => {
+                            if (this.props.page === element) {
+                                return (
+                                    <li className="active" onClick={() => this.props.setPage(element)}><a>{element}</a></li>
+                                )
+                            } else {
+                                return (
+                                    <li onClick={() => this.props.setPage(element)}><a >{element}</a></li>
+                                )
+                            }
+
+                        })}
+                    <li onClick={() => this.props.nextPage()}
+                    ><a>&raquo;</a></li>
+                </ul>
+            )
         }
     }
     handlename = (name) => {
@@ -294,6 +335,7 @@ class ContentProductDetail extends Component {
                                                             <p><span>{element.name}:</span> {element.comment}</p>
                                                         )
                                                     })}
+                                                    {this.renderPagination()}
                                                 </div>
                                                 <hr />
                                                 <p style={{ color: "#5BBCEC" }}>{this.state.notificationComment}</p>

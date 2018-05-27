@@ -1,7 +1,7 @@
 import { userTypes } from '../constants/action.types'
 import { combineReducers } from 'redux'
 import { productTypes} from '../constants/action.types'
-const product = (state = {productDetail: null, bookrelated: [], comment: []}, action) => {
+const product = (state = {productDetail: null, bookrelated: [], comment: [], page: 1, totalpage: null}, action) => {
     switch (action.type) {
         case productTypes.SET_PRODUCT_DETAIL: {
             return {
@@ -37,6 +37,18 @@ const product = (state = {productDetail: null, bookrelated: [], comment: []}, ac
             return {
                 ...state,
                 comment: action.data
+            }
+        }
+        case productTypes.SET_PAGE: {
+            return {
+                ...state,
+                page: action.page
+            }
+        }
+        case productTypes.SET_TOTAL_PAGE: {
+            return {
+                ...state,
+                totalpage: action.totalpage
             }
         }
         default: return state

@@ -2636,9 +2636,8 @@ h2.title {
 .content-conment {
   line-height: 15px;
   font-size: 15px;
-  max-height: 300px;
-  min-height: 300px;
-  overflow-x: hidden;
+  max-height: 200;
+  min-height: 200px;
 }
 .content-conment p {
   background: wheat;
@@ -2649,6 +2648,7 @@ h2.title {
   padding-top: 10px;
   overflow-wrap: inherit;
   min-height: 40px;
+  max-height: 40px;
 }
 .content-conment p span {
   color: #5BBCEC;

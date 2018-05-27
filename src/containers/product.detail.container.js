@@ -25,7 +25,9 @@ class ProductDetailContainer extends Component {
             this.props.productActions.getNameCategoryByID(nextProps.mproductDetail.id_category)
             this.props.productActions.getNamePubliserByID(nextProps.mproductDetail.id_nsx)
             this.props.productActions.getNameAuthorByID(nextProps.mproductDetail.id_author)
-            
+        }
+        if(nextProps.page !== this.props.page) {
+            this.props.productActions.getCommentByIDBook(this.props.match.params.id)
         }
 
     }
@@ -52,6 +54,11 @@ class ProductDetailContainer extends Component {
                         comment={this.props.comment}
                         nameAuthor={this.props.nameAuthor}
                         addToCart={(product) => this.props.productActions.addToCart(product)}
+                        totalpage={this.props.totalpage}
+                        page={this.props.page}
+                        backPage={() => this.props.productActions.backPage()}
+                        nextPage={() => this.props.productActions.nextPage()}
+                        setPage={(page) => this.props.productActions.setPage(page)}
                     />
                 </div>
             )
@@ -74,7 +81,9 @@ const mapStateToProps = state => ({
     nameAuthor: state.productReducers.product.nameAuthor,
     islogin: state.userReducers.login.islogin,
     bookrelated: state.productReducers.product.bookrelated,
-    comment: state.productReducers.product.comment
+    comment: state.productReducers.product.comment,
+    totalpage: state.productReducers.product.totalpage,
+    page: state.productReducers.product.page,
 })
 const mapDispatchToProps = dispatch => {
     return ({

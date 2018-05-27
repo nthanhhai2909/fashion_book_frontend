@@ -95,15 +95,41 @@ export const submitComment = (name, email, comment, id_book) => async (dispatch,
     }
     dispatch(getCommentByIDBook(id_book))
 }
+export const setTotalPage = (totalpage) => ({
+    type: productTypes.SET_TOTAL_PAGE,
+    totalpage
+})
+export const setPage = (page) => ({
+    type: productTypes.SET_PAGE,
+    page
+})
+export const backPage = () => (dispatch, getState) => {
+    let page = getState().productReducers.product.page
+    if(page > 1) {
+        dispatch(setPage(parseInt(page) - 1))
+    }
+}
+
+export const nextPage = () => (dispatch, getState) => {
+    let page = getState().productReducers.product.page
+    let totalpage = getState().productReducers.product.totalpage
+    if(page < totalpage) {
+        dispatch(setPage(parseInt(page) + 1))
+    }
+}
 export const getCommentByIDBook = (id) => async (dispatch, getState) => {
     let res
     try {
-        res = await axios.get('http://localhost:8080/comment/' + id)
+        res = await axios.post('http://localhost:8080/comment/book', {
+             id_book: id,
+             page: getState().productReducers.product.page
+            })
     }
     catch (err) {
         console.log(JSON.stringify(err.response))
         return
     }
+    dispatch(setTotalPage(res.data.totalPage))
     dispatch(setComment(res.data.data))
 }
 export const setComment = (data) => ({
