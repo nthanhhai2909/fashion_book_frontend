@@ -59,6 +59,7 @@ class ProductDetailContainer extends Component {
                         backPage={() => this.props.productActions.backPage()}
                         nextPage={() => this.props.productActions.nextPage()}
                         setPage={(page) => this.props.productActions.setPage(page)}
+                        history={this.props.history}
                     />
                 </div>
             )

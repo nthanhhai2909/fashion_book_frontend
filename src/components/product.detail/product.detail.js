@@ -18,6 +18,7 @@ class ProductDetail extends Component {
           <HeaderMiddle
             islogin={this.props.islogin}
             logout={() => this.props.logout()}
+            history={this.props.history}
           />
           <HeaderBottom
             sortType={this.props.sortType}
