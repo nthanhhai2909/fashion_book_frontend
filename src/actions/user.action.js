@@ -7,12 +7,11 @@ export const loginSuccess = (token, user) => async (dispatch, getState) => {
     dispatch(setLoginSuccess())
     // process cart
     let cart = storeConfig.getCart()
-    
     if(cart !== null) {
         let res
         try {
             res = await axios.post('http://localhost:8080/cart/addtocard', {
-                id: 'add_new',
+                id_user: user.id,
                 products: cart
             })
         }

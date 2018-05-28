@@ -142,7 +142,7 @@ export const addToCart = (product) => async (dispatch, getState) => {
         let res
         try {
             res = await axios.post('http://localhost:8080/cart/addtocard', {
-                id: product._id,
+                id_user: storeConfig.getUser().id,
                 products: product
             })
         }

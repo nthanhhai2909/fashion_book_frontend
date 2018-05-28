@@ -29,7 +29,7 @@ exports.clear = () => {
 exports.getCart = () => {
     if(localStorage.getItem('cart') === null)
         return null
-    return localStorage.getItem('cart')
+    return JSON.parse(localStorage.getItem('cart'))
 }
 exports.removeCart = () => {
     localStorage.removeItem('cart')
