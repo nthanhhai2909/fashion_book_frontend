@@ -6,7 +6,7 @@ import VerifyRegisterAccountContainer from './verify.register.account.container'
 import ForgotPasswordContainer from './forgot.password.container'
 import ProductDetailContainer from './product.detail.container'
 import ProfileContainer from './profile.container'
-
+import CartContainer from './cart.container'
 const App = () => (
   <Router>
     <Switch>
@@ -16,6 +16,7 @@ const App = () => (
       <Route exact path='/forgotpass/' component={ForgotPasswordContainer} />
       <Route exact path='/product/:id' component={ProductDetailContainer} />
       <Route exact path='/profile/:email' component={ProfileContainer} />
+      <Route exact path='/cart' component={CartContainer} />
     </Switch>
   </Router>
 )
