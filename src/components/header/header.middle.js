@@ -31,7 +31,9 @@ class HeaderMiddle extends Component {
         if(this.props.islogin) {
             return (
                 <li className="btn-custom"
-                onClick={() => this.props.logout()}
+                onClick={() => { 
+                    this.props.logout() 
+                    this.props.history.push('/')}}
                 ><a><i className="fa fa-lock"></i>Logout</a></li>
             )
         }

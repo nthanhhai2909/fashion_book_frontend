@@ -5,8 +5,9 @@ export const loginSuccess = (token, user) => async (dispatch, getState) => {
     storeConfig.setUser(user)
     storeConfig.setToken(token)
     dispatch(setLoginSuccess())
-    // process cart
+    
     let cart = storeConfig.getCart()
+    storeConfig.removeCart()
     if(cart !== null) {
         let res
         try {
@@ -19,7 +20,7 @@ export const loginSuccess = (token, user) => async (dispatch, getState) => {
             console.log(JSON.stringify(err.response))
             return
         }
-        storeConfig.removeCart()
+        
     }
 }
 
