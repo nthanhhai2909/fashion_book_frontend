@@ -27,7 +27,12 @@ class Cart extends Component {
             searchTextSubmit={() => this.props.searchTextSubmit()}
           />
         </header>
-        <ContentCart cart={this.props.cart} />
+        <ContentCart
+          cart={this.props.cart}
+          updateProductInCart={product =>
+            this.props.updateProductInCart(product)
+          }
+        />
         <footer id="footer">
           <FooterTop />
           <FooterMiddle />

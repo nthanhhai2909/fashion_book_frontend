@@ -51,3 +51,17 @@ exports.addProductToCart = (product) => {
     }
     localStorage.setItem('cart', JSON.stringify(cart))
 }
+exports.updateProductInCart = (product) => {
+    let cart = this.getCart()
+    if(cart === null) {
+        return false
+    }
+    let index = cart.findIndex(element => product._id === element._id)
+    if(index === -1) {
+        return false
+    } else {
+        cart[index].count = product.count
+    }
+    localStorage.setItem('cart', JSON.stringify(cart))
+    return true
+}

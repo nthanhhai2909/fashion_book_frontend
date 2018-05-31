@@ -47,10 +47,13 @@ class ContentCart extends Component {
                       </td>
                       <td class="cart_quantity">
                         <div class="cart_quantity_button">
-                          <a class="cart_quantity_up" href="">
+                          <span class="cart_quantity_up" onClick={() => {
+                            element.count += 1
+                            this.props.updateProductInCart(element)
+                          }} >
                             {" "}
                             +{" "}
-                          </a>
+                          </span>
                           <input
                             class="cart_quantity_input"
                             type="text"
@@ -59,10 +62,18 @@ class ContentCart extends Component {
                             autocomplete="off"
                             size="2"
                           />
-                          <a class="cart_quantity_down" href="">
+                          <span class="cart_quantity_down" 
+                          onClick={() => {
+                            if(element.count === 1) {
+                              return
+                            }
+                            element.count -= 1
+                            this.props.updateProductInCart(element)
+                          }}
+                          >
                             {" "}
                             -{" "}
-                          </a>
+                          </span>
                         </div>
                       </td>
                       <td class="cart_total">

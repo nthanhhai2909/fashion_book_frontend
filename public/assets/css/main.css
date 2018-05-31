@@ -1695,7 +1695,7 @@ h2.title {
 .cart_product img {
   max-width: 100%;
 }
-.cart_quantity_button a {
+.cart_quantity_button span {
   background:#F0F0E9;
   color: #696763;
   display: inline-block;
@@ -1705,6 +1705,7 @@ h2.title {
   text-align: center;
   width: 35px;
   float: left;
+  cursor: pointer;
 }
 
 

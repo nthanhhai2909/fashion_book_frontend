@@ -24,3 +24,12 @@ export const getCart = () => async (dispatch, getState) => {
     }
     dispatch(setCart(cart.data.data.products))
 }
+export const updateProductInCart = (product) => async (dispatch, getState) => {
+    if (!getState().userReducers.login.islogin) {
+        storeConfig.updateProductInCart(product)
+        dispatch(getCart())
+    }
+    else {
+        console.log('hihi chua lam')
+    }
+}
