@@ -27,9 +27,17 @@ export const getCart = () => async (dispatch, getState) => {
 export const updateProductInCart = (product) => async (dispatch, getState) => {
     if (!getState().userReducers.login.islogin) {
         storeConfig.updateProductInCart(product)
-        dispatch(getCart())
     }
     else {
-        console.log('hihi chua lam')
+        try {
+            await axios.post('http://localhost:8080/cart/update', {
+                id_user: storeConfig.getUser().id,
+                product: product
+            })
+        }
+        catch(err) {
+            console.log(err.response)
+        }
     }
+    dispatch(getCart())
 }
