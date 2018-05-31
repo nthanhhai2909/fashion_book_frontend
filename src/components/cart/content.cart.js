@@ -80,7 +80,7 @@ class ContentCart extends Component {
                         <p class="cart_total_price">{element.price * element.count}</p>
                       </td>
                       <td class="cart_delete">
-                        <a class="cart_quantity_delete" href="">
+                        <a class="cart_quantity_delete"  onClick={() => this.props.deteleProductInCart(element._id)}>
                           <i class="fa fa-times" />
                         </a>
                       </td>

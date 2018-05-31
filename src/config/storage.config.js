@@ -65,3 +65,17 @@ exports.updateProductInCart = (product) => {
     localStorage.setItem('cart', JSON.stringify(cart))
     return true
 }
+exports.deteleProductInCart = (id_product) => {
+    let cart = this.getCart()
+    if(cart === null) {
+        return false
+    }
+    let index = cart.findIndex(element => id_product=== element._id)
+    if(index === -1) {
+        return false
+    } else {
+        cart.splice(index, 1)
+    }
+    localStorage.setItem('cart', JSON.stringify(cart))
+    return true
+}

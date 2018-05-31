@@ -41,3 +41,19 @@ export const updateProductInCart = (product) => async (dispatch, getState) => {
     }
     dispatch(getCart())
 }
+export const deteleProductInCart = (id_product) => async(dispatch, getState) => {
+    if (!getState().userReducers.login.islogin) {
+        storeConfig.deteleProductInCart(id_product)
+    } else {
+        try {
+            await axios.post('http://localhost:8080/cart/delete', {
+                id_user: storeConfig.getUser().id,
+                id_product: id_product
+            })
+        }
+        catch(err) {
+            console.log(err.response)
+        }
+    }
+    dispatch(getCart())
+}

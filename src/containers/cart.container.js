@@ -27,6 +27,7 @@ class CartContainer extends Component {
         history={this.props.history}
         cart={this.props.cart}
         updateProductInCart={(product) => this.props.cartActions.updateProductInCart(product)}
+        deteleProductInCart={(id_product) => this.props.cartActions.deteleProductInCart(id_product)}
       />
     );
   }

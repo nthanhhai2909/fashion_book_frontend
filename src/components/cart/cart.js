@@ -32,6 +32,7 @@ class Cart extends Component {
           updateProductInCart={product =>
             this.props.updateProductInCart(product)
           }
+          deteleProductInCart={(id_product) => this.props.deteleProductInCart(id_product)}
         />
         <footer id="footer">
           <FooterTop />
