@@ -1779,14 +1779,30 @@ h2.title {
   padding: 7px 20px;
 }
 
+.user_option li{
+  margin-bottom: 5px;
+}
 
 .user_option label {
   color: #696763;
   font-weight: normal;
-  margin-left: 10px;
+  margin-right: 50px;
+  width: 20px;
 }
+.user_option input {
+  line-height: 20px;
+  font-size: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #F0F0E9;
+  border-radius: 5px 5px;
+  width: 40%;
+  margin-right: 10px;
+}
+.user_option span {
+  color: tomato;
 
-
+}
 .user_info {
   display: block;
   margin-bottom: 15px;
@@ -1799,7 +1815,10 @@ h2.title {
   display: block;
   font-size: 15px;
   font-weight: normal;
-
+}
+.user_info span {
+  color: tomato;
+  margin-top: 5px;
 }
 
 .user_info .single_field {

@@ -28,6 +28,7 @@ class Cart extends Component {
           />
         </header>
         <ContentCart
+          islogin={this.props.islogin}
           cart={this.props.cart}
           updateProductInCart={product =>
             this.props.updateProductInCart(product)

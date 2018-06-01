@@ -1,9 +1,19 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { Modal, Button } from "react-bootstrap";
 class ContentCart extends Component {
   constructor() {
     super();
     this.state = {
-      total: 0
+      total: 0,
+      show: false,
+      name: '',
+      phone: '',
+      city: '',
+      district: '',
+      ward: '',
+      notiName: '',
+
     };
   }
   componentWillMount() {
@@ -15,7 +25,7 @@ class ContentCart extends Component {
     this.setState({ total: total });
   }
   componentWillReceiveProps(nextProps) {
-    if (nextProps.cart.length !== this.props.cart.length) {
+    if (nextProps.cart !== this.props.cart) {
       let total = 0;
       for (let i = 0; i < nextProps.cart.length; i++) {
         total +=
@@ -23,6 +33,15 @@ class ContentCart extends Component {
       }
       this.setState({ total: total });
     }
+  }
+  handlePayment = () => {
+    if(!this.props.islogin) {
+      this.setState({show: true})
+      return
+    } else {
+      this.setState({show: false})
+    }
+
   }
 
   render() {
@@ -129,7 +148,7 @@ class ContentCart extends Component {
         <section id="do_action">
           <div className="container">
             <div className="row">
-              <div className="col-md-12">
+              <div className="col-md-6">
                 <div class="total_area">
                   <ul>
                     <li>
@@ -145,11 +164,99 @@ class ContentCart extends Component {
                       Total <span>${this.state.total}</span>
                     </li>
                   </ul>
-                  <a class="btn btn-default update" href="">
-                    Update
-                  </a>
-                  <a class="btn btn-default check_out" href="">
-                    Check Out
+                  <Modal
+                    show={this.state.show}
+                    onHide={() => this.setState({ show: false })}
+                    container={this}
+                    aria-labelledby="contained-modal-title"
+                  >
+                    <Modal.Header closeButton>
+                      <Modal.Title id="contained-modal-title">
+                        Notification
+                      </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Please sign in to continue!!!</Modal.Body>
+                    <Modal.Footer>
+                      <Button onClick={() => this.setState({ show: false })}>
+                        <a>Cancel</a>
+                      </Button>
+                      <Button onClick={this.handleHide}>
+                        <Link to="/login_register">Login</Link>
+                      </Button>
+                    </Modal.Footer>
+                  </Modal>
+                  <Link class="btn btn-default check_out" to={"/"}>
+                    Continue shopping
+                  </Link>
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="chose_area">
+                  <ul class="user_option">
+                    <li>
+                      <label>Name</label>
+                      <input type="text" />
+                      <span>sadasfd</span>
+                    </li>
+                    <li>
+                      <label>Phone</label>
+                      <input type="text" />
+                      <span>sadasfd</span>
+                    </li>
+                  </ul>
+                  <ul className="user_info">
+                    <li className="single_field">
+                      <label>Province / city</label>
+                      <select>
+                        <option>United States</option>
+                        <option>Bangladesh</option>
+                        <option>UK</option>
+                        <option>India</option>
+                        <option>Pakistan</option>
+                        <option>Ucrane</option>
+                        <option>Canada</option>
+                        <option>Dubai</option>
+                      </select>
+                    </li>
+                    <li className="single_field">
+                      <label>District</label>
+                      <select>
+                        <option>Select</option>
+                        <option>Dhaka</option>
+                        <option>London</option>
+                        <option>Dillih</option>
+                        <option>Lahore</option>
+                        <option>Alaska</option>
+                        <option>Canada</option>
+                        <option>Dubai</option>
+                      </select>
+                    </li>
+                    <li className="single_field">
+                      <label>Ward</label>
+                      <select>
+                        <option>Select</option>
+                        <option>Dhaka</option>
+                        <option>London</option>
+                        <option>Dillih</option>
+                        <option>Lahore</option>
+                        <option>Alaska</option>
+                        <option>Canada</option>
+                        <option>Dubai</option>
+                      </select>
+                    </li>
+                    <span>sadasfd</span>
+                  </ul>
+                  <ul className="user_option">
+                    <li>
+                      <label>Address</label>
+                      <input type="text" />
+                      <span>sadasfd</span>
+                    </li>
+                  </ul>
+                  <a
+                    className="btn btn-default update"
+                    onClick={() => this.handlePayment()}>
+                    Payment
                   </a>
                 </div>
               </div>
