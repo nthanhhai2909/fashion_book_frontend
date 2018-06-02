@@ -61,7 +61,6 @@ class HeaderMiddle extends Component {
     }
   };
   render() {
-    console.log("dmm ", this.props);
     return (
       <div className="header-middle">
         <div className="container">

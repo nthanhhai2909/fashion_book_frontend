@@ -22,7 +22,10 @@ export const getCart = () => async (dispatch, getState) => {
         console.log(err)
         return
     }
-    dispatch(setCart(cart.data.data.products))
+    if(cart.data.data !== null) {
+        dispatch(setCart(cart.data.data.products))
+    }
+    
 }
 export const updateProductInCart = (product) => async (dispatch, getState) => {
     if (!getState().userReducers.login.islogin) {
