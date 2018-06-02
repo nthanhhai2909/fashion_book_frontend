@@ -235,6 +235,7 @@ export const setRangeType = (range) => async (dispatch, getState) => {
         _link = 'http://localhost:8080/book/author'
     }
     let res
+    console.log(_link)
     try {
         res = await axios.post(_link, {
             page: 1,
@@ -249,6 +250,7 @@ export const setRangeType = (range) => async (dispatch, getState) => {
         console.log(err.response)
         return
     }
+    console.log(JSON.stringify(res))
     dispatch(setRange(range))
     dispatch(setBook(res.data.data))
     dispatch(setTotalPage(res.data.totalPage))
