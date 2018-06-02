@@ -33,14 +33,46 @@ export const getAuthor = () => async (dispatch, getState) => {
     dispatch(setAuthor(res.data.data))
 }
 export const getBook = () => async (dispatch, getState) => {
+    let sorttype = 'release_date'
+    let sortorder = '-1'
+    let sortType = getState().homeReducers.book.sortType
+    if (sortType === sortTypes.SORT_DAY_DECREASED) {
+        sorttype = 'release_date'
+        sortorder = '-1'
+    } else if (sortType === sortTypes.SORT_DAY_INCREASED) {
+        sorttype = 'release_date'
+        sortorder = '1'
+    } else if (sortType === sortTypes.SORT_PRICE_DECREASED) {
+        sorttype = 'price'
+        sortorder = '-1'
+    } else if (sortType === sortTypes.SORT_PRICE_INCREASED) {
+        sorttype = 'price'
+        sortorder = '1'
+    } else if (sortType === sortTypes.SORT_SALES_DECREASED) {
+        sorttype = 'sales'
+        sortorder = '-1'
+    } else if (sortType === sortTypes.SORT_SALES_INCREASED) {
+        sorttype = 'sales'
+        sortorder = '1'
+    } else if (sortType === sortTypes.SORT_VIEWS_DECREASED) {
+        sorttype = 'view_counts'
+        sortorder = '-1'
+    } else if (sortType === sortTypes.SORT_VIEWS_INCREASED) {
+        sorttype = 'view_counts'
+        sortorder = '1'
+    }
     let res
     try {
         res = await axios.post('http://localhost:8080/book/allbook', {
             page: getState().homeReducers.book.page,
-            range: null
+            range: null,
+            sorttype: sorttype,
+            sortorder: sortorder,
+            searchtext: getState().homeReducers.book.searchtext
         })
     }
     catch (err) {
+        console.log(err.response)
         return
     }
     dispatch(setBook(res.data.data))
@@ -200,7 +232,7 @@ export const setRangeType = (range) => async (dispatch, getState) => {
             sorttype: sorttype,
             sortorder: sortorder,
             id: getState().homeReducers.book.id,
-            searchtext: undefined
+            searchtext: getState().homeReducers.book.searchtext
         })
     }
     catch (err) {
