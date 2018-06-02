@@ -7,12 +7,14 @@ class ContentCart extends Component {
     this.state = {
       total: 0,
       show: false,
-      name: '',
-      phone: '',
-      city: '',
-      district: '',
-      ward: '',
-      notiName: '',
+      name: "",
+      phone: "",
+      city: {name: "", code: null},
+      district: {name: "", code: null},
+      ward: {name: "", code: null},
+      notiName: "",
+      notiPhone: "",
+      notiAddress: "",
 
     };
   }
@@ -22,7 +24,6 @@ class ContentCart extends Component {
       total +=
         Number(this.props.cart[i].price) * Number(this.props.cart[i].count);
     }
-    this.setState({ total: total });
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.cart !== this.props.cart) {
@@ -35,15 +36,62 @@ class ContentCart extends Component {
     }
   }
   handlePayment = () => {
-    if(!this.props.islogin) {
-      this.setState({show: true})
-      return
+    if (!this.props.islogin) {
+      this.setState({ show: true });
+      return;
     } else {
-      this.setState({show: false})
+      this.setState({ show: false });
+    }
+    let check = true
+    if(this.state.name.length < 3) {
+      this.setState({
+        notiName: "Name invalid"
+      })
+      check = false
+    } else {
+      this.setState({
+        notiName: ''
+      })
+      check = true
+    }
+    if(!this.isvaidPhone(this.state.phone)) {
+      this.setState({
+        notiPhone: "Phone invalid"
+      })
+      check = false
+    } else {
+      this.setState({notiPhone: ""})
+      check = true
     }
 
+  };
+  isvaidPhone = (phone) => {
+    if(phone.length < 10 || phone.length > 11) 
+      return false
+    for(let i = 0; i < phone.length; i++) {
+      if(phone.chatAt(i) < '0' || phone.chatAt(i) > '9') 
+        return false
+    }
+    return true
   }
-
+  handleSelectCity(value) {
+    let city = value.split("/");
+    let name = city[0];
+    let code = city[1];
+    this.setState({
+      city: {name: name, code: code}
+    });
+    this.props.getDistrict(code);
+  }
+  handleSelectDistrict(value) {
+    let district = value.split("/");
+    let name = district[0];
+    let code = district[1];
+    this.setState({
+      district: {name: name, code: code}
+    })
+    this.props.getWard(this.state.city.code, code)
+  }
   render() {
     return (
       <div>
@@ -207,41 +255,41 @@ class ContentCart extends Component {
                   <ul className="user_info">
                     <li className="single_field">
                       <label>Province / city</label>
-                      <select>
-                        <option>United States</option>
-                        <option>Bangladesh</option>
-                        <option>UK</option>
-                        <option>India</option>
-                        <option>Pakistan</option>
-                        <option>Ucrane</option>
-                        <option>Canada</option>
-                        <option>Dubai</option>
+                      <select
+                        value={this.props.city.name}
+                        onChange={e => this.handleSelectCity(e.target.value)}
+                      >
+                        {this.props.city.map((element, index) => {
+                          return (
+                            <option value={element.name + "/" + element.code}>
+                              {element.name}
+                            </option>
+                          );
+                        })}
                       </select>
                     </li>
                     <li className="single_field">
                       <label>District</label>
-                      <select>
-                        <option>Select</option>
-                        <option>Dhaka</option>
-                        <option>London</option>
-                        <option>Dillih</option>
-                        <option>Lahore</option>
-                        <option>Alaska</option>
-                        <option>Canada</option>
-                        <option>Dubai</option>
+                      <select value={this.state.district.name} onChange={(e) => this.handleSelectDistrict(e.target.value)}>
+                        {this.props.district.map((element, index) => {
+                          return (
+                            <option value={element.name + "/" + element.code}>
+                              {element.name}
+                            </option>
+                          );
+                        })}
                       </select>
                     </li>
                     <li className="single_field">
                       <label>Ward</label>
-                      <select>
-                        <option>Select</option>
-                        <option>Dhaka</option>
-                        <option>London</option>
-                        <option>Dillih</option>
-                        <option>Lahore</option>
-                        <option>Alaska</option>
-                        <option>Canada</option>
-                        <option>Dubai</option>
+                      <select value={this.state.ward.name}  >
+                      {this.props.ward.map((element, index) => {
+                          return (
+                            <option value={element.name + "/" + element.code}>
+                              {element.name}
+                            </option>
+                          );
+                        })}
                       </select>
                     </li>
                     <span>sadasfd</span>
@@ -255,7 +303,8 @@ class ContentCart extends Component {
                   </ul>
                   <a
                     className="btn btn-default update"
-                    onClick={() => this.handlePayment()}>
+                    onClick={() => this.handlePayment()}
+                  >
                     Payment
                   </a>
                 </div>

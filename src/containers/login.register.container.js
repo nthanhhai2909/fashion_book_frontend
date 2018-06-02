@@ -157,6 +157,7 @@ class LoginRegisterContainer extends Component {
                     setRangeType={(range) => this.props.homeActions.setRangeType(range)}
                     setSearchText={(value) => this.props.homeActions.setSearchText(value)}
                     searchTextSubmit={() => this.props.homeActions.searchTextSubmit()}
+                    history={this.props.history}
                 />
             </div>
         )

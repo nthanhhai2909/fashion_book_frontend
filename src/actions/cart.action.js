@@ -57,3 +57,48 @@ export const deteleProductInCart = (id_product) => async(dispatch, getState) => 
     }
     dispatch(getCart())
 }
+export const setCity = (data) => ({
+    type: cartTypes.SET_CITY,
+    data
+})
+export const setDistrict = (data) => ({
+    type: cartTypes.SET_DICTRICT,
+    data
+})
+export const setWard = (data) => ({
+    type: cartTypes.SET_WARD,
+    data
+})
+export const getCity = () => async (dispatch, getState) => {
+    let res = null
+    try {
+        res = await axios.get('http://localhost:8080/address/city/all')
+    }
+    catch(err) {
+        console.log(err)
+    }  
+    dispatch(setCity(res.data.data))
+}
+export const getDistrict = (code) => async (dispatch, getState) => {
+    let res = null
+    try {
+        res = await axios.get('http://localhost:8080/address/city/district/' + code)
+    }
+    catch(err) {
+        console.log(err)
+    }  
+    dispatch(setDistrict(res.data.data))
+}
+export const getWard = (codecity, codedistrict) => async (dispatch, getState) => {
+    let res = null
+    try {
+        res = await axios.post('http://localhost:8080/address/city/district/ward', {
+            codecity: codecity,
+            codedistrict: codedistrict
+        })
+    }
+    catch(err) {
+        console.log(err)
+    }  
+    dispatch(setWard(res.data.data))
+}

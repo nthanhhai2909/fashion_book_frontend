@@ -60,7 +60,9 @@ export const sortTypes =  {
     SORT_PRICE_DECREASED: 'SORT_PRICE_DECREASED',
 
 }
-
 export const cartTypes = {
-    SET_CART: 'SET_CART'
+    SET_CART: 'SET_CART',
+    SET_CITY: 'SET_CITY',
+    SET_DICTRICT: 'SET_DISTRICT',
+    SET_WARD: 'SET_WARD'
 }

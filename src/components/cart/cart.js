@@ -34,6 +34,11 @@ class Cart extends Component {
             this.props.updateProductInCart(product)
           }
           deteleProductInCart={(id_product) => this.props.deteleProductInCart(id_product)}
+          city={this.props.city}
+          getDistrict={(code) => this.props.getDistrict(code)}
+          district={this.props.district}
+          getWard={(codecity, codedistrict) => this.props.getWard(codecity, codedistrict)}
+          ward={this.props.ward}
         />
         <footer id="footer">
           <FooterTop />

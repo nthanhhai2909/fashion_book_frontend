@@ -23,7 +23,6 @@ export const loginSuccess = (token, user) => async (dispatch, getState) => {
         
     }
 }
-
 export const auth = () => async (dispatch, getState)  => {
     if(storeConfig.getUser() === null){
         dispatch(setLoginFail())

@@ -10,13 +10,14 @@ const Home = ({ setEmailogin, setPasswordlogin, setEmail,
     setFirstname, setLastname, setAddress, setPhone, setPassword, setConfirm,
     notificationRegister,notificationLogin, registerSubmit, 
      loginSubmit, islogin, logout, sortType, setSortType, setSearchText,
-     searchTextSubmit}) => (
+     searchTextSubmit, history}) => (
         <div>
             <header id="header">
                 <HeaderTop />
                 <HeaderMiddle
                     islogin={islogin}
                     logout={() => logout} />
+                    history={history}
                 <HeaderBottom
                     sortType={sortType}
                     setSortType={(value) => setSortType(value)}

@@ -13,6 +13,7 @@ class CartContainer extends Component {
   componentWillMount() {
     this.props.actions.auth()
     this.props.cartActions.getCart()
+    this.props.cartActions.getCity()
   }
   render() {
     return (
@@ -28,13 +29,21 @@ class CartContainer extends Component {
         cart={this.props.cart}
         updateProductInCart={(product) => this.props.cartActions.updateProductInCart(product)}
         deteleProductInCart={(id_product) => this.props.cartActions.deteleProductInCart(id_product)}
+        city={this.props.city}
+        getDistrict={(code) => this.props.cartActions.getDistrict(code)}
+        district={this.props.district}
+        getWard={(codecity, codedistrict) => this.props.cartActions.getWard(codecity, codedistrict)}
+        ward={this.props.ward}
       />
     );
   }
 }
 const mapStateToProps = state => ({
   islogin: state.userReducers.login.islogin,
-  cart: state.cartReducers.cart.data
+  cart: state.cartReducers.cart.data,
+  city: state.cartReducers.cart.city,
+  district: state.cartReducers.cart.district,
+  ward: state.cartReducers.cart.ward
 });
 
 const mapDispatchToProps = dispatch => {
