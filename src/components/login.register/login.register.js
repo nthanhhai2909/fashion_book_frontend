@@ -16,8 +16,9 @@ const Home = ({ setEmailogin, setPasswordlogin, setEmail,
                 <HeaderTop />
                 <HeaderMiddle
                     islogin={islogin}
-                    logout={() => logout} />
+                    logout={() => logout}
                     history={history}
+                    />
                 <HeaderBottom
                     sortType={sortType}
                     setSortType={(value) => setSortType(value)}

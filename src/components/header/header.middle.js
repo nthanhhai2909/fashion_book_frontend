@@ -53,6 +53,7 @@ class HeaderMiddle extends Component {
         }
     }
     render() {
+        console.log(this.props.history)
         return (
             <div className="header-middle">
                 <div className="container">
