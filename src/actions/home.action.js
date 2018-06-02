@@ -77,7 +77,8 @@ export const getBook = () => async (dispatch, getState) => {
             range: null,
             sorttype: sorttype,
             sortorder: sortorder,
-            searchtext: getState().homeReducers.book.searchtext
+            searchtext: getState().homeReducers.book.searchtext,
+            id: getState().homeReducers.book.id
         })
     }
     catch (err) {
