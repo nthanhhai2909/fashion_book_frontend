@@ -44,6 +44,7 @@ class Profile extends Component {
                     <HeaderMiddle
                         islogin={this.props.islogin}
                         logout={() => this.props.logout()}
+                        history={this.props.history}
                     />
                     <HeaderBottom />
                 </header>

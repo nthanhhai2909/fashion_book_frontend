@@ -62,6 +62,7 @@ class ProfileContainer extends Component {
                             this.state.phone_number
                         )}
                         isupdate={this.props.isupdate}
+                        history={this.props.history}
                     />
                 </div>
             )

@@ -92,7 +92,7 @@ class ContentHome extends Component {
                                                             this.props.setTitle(element.name)
                                                             this.props.setBranch('publisher')
                                                             this.props.setIDBranch(element._id)
-                                                            this.props.branchClick('category', element._id)
+                                                            this.props.branchClick('publisher', element._id)
                                                         }}
                                                         className="item-custom" item-custom><a> <span className="pull-right"></span>{element.name}</a></li>
                                                 )
