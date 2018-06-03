@@ -1815,10 +1815,11 @@ h2.title {
   display: block;
   font-size: 15px;
   font-weight: normal;
+  margin-bottom: 10px;
 }
 .user_info span {
   color: tomato;
-  margin-top: 5px;
+ padding-top: 10px;
 }
 
 .user_info .single_field {

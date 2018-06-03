@@ -12,9 +12,11 @@ class ContentCart extends Component {
       city: {name: "", code: null},
       district: {name: "", code: null},
       ward: {name: "", code: null},
+      address: "",
       notiName: "",
       notiPhone: "",
       notiAddress: "",
+      notiDetailAddress: "",
 
     };
   }
@@ -52,7 +54,6 @@ class ContentCart extends Component {
       this.setState({
         notiName: ''
       })
-      check = true
     }
     if(!this.isvaidPhone(this.state.phone)) {
       this.setState({
@@ -61,15 +62,32 @@ class ContentCart extends Component {
       check = false
     } else {
       this.setState({notiPhone: ""})
-      check = true
     }
-
+    if(this.state.city.name === "" || this.state.district.name === "" || this.state.ward.name === "") {
+      this.setState({
+        notiAddress: "Address invalid"
+      })
+      check = false
+    } else {
+      this.setState({
+        notiAddress: ""
+      })
+    }
+    if(this.state.address === "") {
+      this.setState({notiDetailAddress: 'Address invalid'})
+      check = true
+    } else {
+      this.setState({ notiDetailAddress: ""})
+    }
+    if(check === true) 
+      return
+    
   };
   isvaidPhone = (phone) => {
     if(phone.length < 10 || phone.length > 11) 
       return false
     for(let i = 0; i < phone.length; i++) {
-      if(phone.chatAt(i) < '0' || phone.chatAt(i) > '9') 
+      if(phone.charAt(i) < '0' || phone.charAt(i) > '9') 
         return false
     }
     return true
@@ -91,6 +109,14 @@ class ContentCart extends Component {
       district: {name: name, code: code}
     })
     this.props.getWard(this.state.city.code, code)
+  }
+  handleSelectWard(value) {
+    let ward = value.split("/");
+    let name = ward[0];
+    let code = ward[1];
+    this.setState({
+      ward: {name: name, code: code}
+    })
   }
   render() {
     return (
@@ -243,13 +269,13 @@ class ContentCart extends Component {
                   <ul class="user_option">
                     <li>
                       <label>Name</label>
-                      <input type="text" />
-                      <span>sadasfd</span>
+                      <input type="text" value={this.state.name} onChange={(e) => this.setState({name: e.target.value})}/>
+                      <span>{this.state.notiName}</span>
                     </li>
                     <li>
                       <label>Phone</label>
-                      <input type="text" />
-                      <span>sadasfd</span>
+                      <input type="text" value={this.state.phone} onChange={(e) => this.setState({phone: e.target.value})} />
+                      <span>{this.state.notiPhone}</span>
                     </li>
                   </ul>
                   <ul className="user_info">
@@ -282,7 +308,7 @@ class ContentCart extends Component {
                     </li>
                     <li className="single_field">
                       <label>Ward</label>
-                      <select value={this.state.ward.name}  >
+                      <select value={this.state.ward.name} onChange={(e) => this.handleSelectWard(e.target.value)} >
                       {this.props.ward.map((element, index) => {
                           return (
                             <option value={element.name + "/" + element.code}>
@@ -292,13 +318,13 @@ class ContentCart extends Component {
                         })}
                       </select>
                     </li>
-                    <span>sadasfd</span>
+                    <span>{this.state.notiAddress}</span>
                   </ul>
                   <ul className="user_option">
                     <li>
                       <label>Address</label>
-                      <input type="text" />
-                      <span>sadasfd</span>
+                      <input type="text" value={this.state.address} onChange={(e) => this.setState({address: e.target.value})}/>
+                      <span>{this.state.notiDetailAddress}</span>
                     </li>
                   </ul>
                   <a
