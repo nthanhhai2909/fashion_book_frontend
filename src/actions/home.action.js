@@ -298,7 +298,6 @@ export const setRange = (range) => ({
     dispatch(setSearchText(''))
     dispatch(setBook(res.data.data))
     dispatch(setTotalPage(res.data.totalPage))
-    
  }
 
  export const searchTextSubmit = () => async(dispatch, getState) => {

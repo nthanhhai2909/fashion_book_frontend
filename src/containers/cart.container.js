@@ -34,6 +34,8 @@ class CartContainer extends Component {
         district={this.props.district}
         getWard={(codecity, codedistrict) => this.props.cartActions.getWard(codecity, codedistrict)}
         ward={this.props.ward}
+        payment={(city, district, ward, address, phone, name) => 
+          this.props.cartActions.payment(city, district, ward, address, phone, name)}
       />
     );
   }

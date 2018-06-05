@@ -79,9 +79,10 @@ class ContentCart extends Component {
     } else {
       this.setState({ notiDetailAddress: ""})
     }
-    if(check === true) 
+    if(check === false) 
       return
-    
+    this.props.payment(this.state.city.name, this.state.district.name,
+       this.state.ward.name, this.state.address, this.state.phone, this.state.name)
   };
   isvaidPhone = (phone) => {
     if(phone.length < 10 || phone.length > 11) 

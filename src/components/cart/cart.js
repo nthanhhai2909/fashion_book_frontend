@@ -39,6 +39,8 @@ class Cart extends Component {
           district={this.props.district}
           getWard={(codecity, codedistrict) => this.props.getWard(codecity, codedistrict)}
           ward={this.props.ward}
+          payment={(city, district, ward, address, phone, name) => 
+            this.props.payment(city, district, ward, address, phone, name)}
         />
         <footer id="footer">
           <FooterTop />

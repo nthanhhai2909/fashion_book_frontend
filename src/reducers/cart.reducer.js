@@ -26,6 +26,18 @@ const cart = (state = { data: [], city: [], district: [], ward: []}, action) => 
                 ward: action.data
             }
         }
+        case cartTypes.PAYMENT_SUCCESS: {
+            return {
+                ...state,
+                ispay: true
+            }
+        }
+        case cartTypes.PAYMENT_FAIL: {
+            return {
+                ...state,
+                ispay: false
+            }
+        }
         default: return state
     }
 }

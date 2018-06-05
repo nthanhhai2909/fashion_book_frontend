@@ -105,3 +105,31 @@ export const getWard = (codecity, codedistrict) => async (dispatch, getState) =>
     }  
     dispatch(setWard(res.data.data))
 }
+export const paymentSuccess = () => ({
+    type: cartTypes.PAYMENT_SUCCESS
+})
+export const paymentFail = () => ({
+    type: cartTypes.PAYMENT_FAIL
+})
+export const payment = (city, district, ward, address, phone, name) => async (dispatch, getState) => {
+    let res = null
+    try {
+        res = await axios.post('http://localhost:8080/bill/add', {
+            id_user: storeConfig.getUser().id,
+            city: city,
+            district: district,
+            ward: ward,
+            address: address,
+            phone: phone,
+            name: name,
+            email: storeConfig.getUser().email
+        })
+    }
+    catch(err) { 
+        dispatch(paymentFail())
+        console.log(err.response)
+        return
+    }
+    dispatch(paymentSuccess())
+    dispatch(getCart())
+}
