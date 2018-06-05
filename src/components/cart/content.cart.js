@@ -9,15 +9,14 @@ class ContentCart extends Component {
       show: false,
       name: "",
       phone: "",
-      city: {name: "", code: null},
-      district: {name: "", code: null},
-      ward: {name: "", code: null},
+      city: { name: "", code: null },
+      district: { name: "", code: null },
+      ward: { name: "", code: null },
       address: "",
       notiName: "",
       notiPhone: "",
       notiAddress: "",
-      notiDetailAddress: "",
-
+      notiDetailAddress: ""
     };
   }
   componentWillMount() {
@@ -44,61 +43,68 @@ class ContentCart extends Component {
     } else {
       this.setState({ show: false });
     }
-    let check = true
-    if(this.state.name.length < 3) {
+    let check = true;
+    if (this.state.name.length < 3) {
       this.setState({
         notiName: "Name invalid"
-      })
-      check = false
+      });
+      check = false;
     } else {
       this.setState({
-        notiName: ''
-      })
+        notiName: ""
+      });
     }
-    if(!this.isvaidPhone(this.state.phone)) {
+    if (!this.isvaidPhone(this.state.phone)) {
       this.setState({
         notiPhone: "Phone invalid"
-      })
-      check = false
+      });
+      check = false;
     } else {
-      this.setState({notiPhone: ""})
+      this.setState({ notiPhone: "" });
     }
-    if(this.state.city.name === "" || this.state.district.name === "" || this.state.ward.name === "") {
+    if (
+      this.state.city.name === "" ||
+      this.state.district.name === "" ||
+      this.state.ward.name === ""
+    ) {
       this.setState({
         notiAddress: "Address invalid"
-      })
-      check = false
+      });
+      check = false;
     } else {
       this.setState({
         notiAddress: ""
-      })
+      });
     }
-    if(this.state.address === "") {
-      this.setState({notiDetailAddress: 'Address invalid'})
-      check = true
+    if (this.state.address === "") {
+      this.setState({ notiDetailAddress: "Address invalid" });
+      check = true;
     } else {
-      this.setState({ notiDetailAddress: ""})
+      this.setState({ notiDetailAddress: "" });
     }
-    if(check === false) 
-      return
-    this.props.payment(this.state.city.name, this.state.district.name,
-       this.state.ward.name, this.state.address, this.state.phone, this.state.name)
+    if (check === false) return;
+    this.props.payment(
+      this.state.city.name,
+      this.state.district.name,
+      this.state.ward.name,
+      this.state.address,
+      this.state.phone,
+      this.state.name
+    );
   };
-  isvaidPhone = (phone) => {
-    if(phone.length < 10 || phone.length > 11) 
-      return false
-    for(let i = 0; i < phone.length; i++) {
-      if(phone.charAt(i) < '0' || phone.charAt(i) > '9') 
-        return false
+  isvaidPhone = phone => {
+    if (phone.length < 10 || phone.length > 11) return false;
+    for (let i = 0; i < phone.length; i++) {
+      if (phone.charAt(i) < "0" || phone.charAt(i) > "9") return false;
     }
-    return true
-  }
+    return true;
+  };
   handleSelectCity(value) {
     let city = value.split("/");
     let name = city[0];
     let code = city[1];
     this.setState({
-      city: {name: name, code: code}
+      city: { name: name, code: code }
     });
     this.props.getDistrict(code);
   }
@@ -107,17 +113,17 @@ class ContentCart extends Component {
     let name = district[0];
     let code = district[1];
     this.setState({
-      district: {name: name, code: code}
-    })
-    this.props.getWard(this.state.city.code, code)
+      district: { name: name, code: code }
+    });
+    this.props.getWard(this.state.city.code, code);
   }
   handleSelectWard(value) {
     let ward = value.split("/");
     let name = ward[0];
     let code = ward[1];
     this.setState({
-      ward: {name: name, code: code}
-    })
+      ward: { name: name, code: code }
+    });
   }
   render() {
     return (
@@ -270,12 +276,20 @@ class ContentCart extends Component {
                   <ul class="user_option">
                     <li>
                       <label>Name</label>
-                      <input type="text" value={this.state.name} onChange={(e) => this.setState({name: e.target.value})}/>
+                      <input
+                        type="text"
+                        value={this.state.name}
+                        onChange={e => this.setState({ name: e.target.value })}
+                      />
                       <span>{this.state.notiName}</span>
                     </li>
                     <li>
                       <label>Phone</label>
-                      <input type="text" value={this.state.phone} onChange={(e) => this.setState({phone: e.target.value})} />
+                      <input
+                        type="text"
+                        value={this.state.phone}
+                        onChange={e => this.setState({ phone: e.target.value })}
+                      />
                       <span>{this.state.notiPhone}</span>
                     </li>
                   </ul>
@@ -286,6 +300,14 @@ class ContentCart extends Component {
                         value={this.props.city.name}
                         onChange={e => this.handleSelectCity(e.target.value)}
                       >
+                        <option
+                          value=""
+                          disabled
+                          selected
+                          style={{display:'none'}}
+                        >
+                          Province / city
+                        </option>
                         {this.props.city.map((element, index) => {
                           return (
                             <option value={element.name + "/" + element.code}>
@@ -297,7 +319,20 @@ class ContentCart extends Component {
                     </li>
                     <li className="single_field">
                       <label>District</label>
-                      <select value={this.state.district.name} onChange={(e) => this.handleSelectDistrict(e.target.value)}>
+                      <select
+                        value={this.state.district.name}
+                        onChange={e =>
+                          this.handleSelectDistrict(e.target.value)
+                        }
+                      >
+                        <option
+                          value=""
+                          disabled
+                          selected
+                          style={{display:'none'}}
+                        >
+                          District
+                        </option>
                         {this.props.district.map((element, index) => {
                           return (
                             <option value={element.name + "/" + element.code}>
@@ -309,8 +344,19 @@ class ContentCart extends Component {
                     </li>
                     <li className="single_field">
                       <label>Ward</label>
-                      <select value={this.state.ward.name} onChange={(e) => this.handleSelectWard(e.target.value)} >
-                      {this.props.ward.map((element, index) => {
+                      <select
+                        value={this.state.ward.name}
+                        onChange={e => this.handleSelectWard(e.target.value)}
+                      >
+                        <option
+                          value=""
+                          disabled
+                          selected
+                          style={{display:'none'}}
+                        >
+                          Ward
+                        </option>
+                        {this.props.ward.map((element, index) => {
                           return (
                             <option value={element.name + "/" + element.code}>
                               {element.name}
@@ -324,7 +370,13 @@ class ContentCart extends Component {
                   <ul className="user_option">
                     <li>
                       <label>Address</label>
-                      <input type="text" value={this.state.address} onChange={(e) => this.setState({address: e.target.value})}/>
+                      <input
+                        type="text"
+                        value={this.state.address}
+                        onChange={e =>
+                          this.setState({ address: e.target.value })
+                        }
+                      />
                       <span>{this.state.notiDetailAddress}</span>
                     </li>
                   </ul>
