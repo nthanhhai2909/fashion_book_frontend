@@ -38,6 +38,12 @@ const cart = (state = { data: [], city: [], district: [], ward: []}, action) => 
                 ispay: false
             }
         }
+        case cartTypes.RESET_PAYMENT: {
+            return {
+                ...state,
+                ispay: null
+            }
+        }
         default: return state
     }
 }

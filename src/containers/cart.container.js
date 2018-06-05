@@ -36,6 +36,7 @@ class CartContainer extends Component {
         ward={this.props.ward}
         payment={(city, district, ward, address, phone, name) => 
           this.props.cartActions.payment(city, district, ward, address, phone, name)}
+        ispay={this.props.ispay}
       />
     );
   }
@@ -45,7 +46,8 @@ const mapStateToProps = state => ({
   cart: state.cartReducers.cart.data,
   city: state.cartReducers.cart.city,
   district: state.cartReducers.cart.district,
-  ward: state.cartReducers.cart.ward
+  ward: state.cartReducers.cart.ward,
+  ispay: state.cartReducers.cart.ispay
 });
 
 const mapDispatchToProps = dispatch => {

@@ -16,7 +16,9 @@ class ContentCart extends Component {
       notiName: "",
       notiPhone: "",
       notiAddress: "",
-      notiDetailAddress: ""
+      notiDetailAddress: "",
+      ispay: false,
+      showpaymentfail: false
     };
   }
   componentWillMount() {
@@ -35,6 +37,30 @@ class ContentCart extends Component {
       }
       this.setState({ total: total });
     }
+    if(nextProps.ispay !== this.props.ispay && nextProps.ispay === true) {
+      this.setState({ispay: true})
+      this.reset()
+    }
+    if(nextProps.ispay !== this.props.ispay && nextProps.ispay === false) {
+      this.setState({showpaymentfail: true})
+    }
+  }
+  reset = () => {
+    this.setState({
+      show: false,
+      name: "",
+      phone: "",
+      city: { name: "", code: null },
+      district: { name: "", code: null },
+      ward: { name: "", code: null },
+      address: "",
+      notiName: "",
+      notiPhone: "",
+      notiAddress: "",
+      notiDetailAddress: "",
+      ispay: false,
+      showpaymentfail: false
+    })
   }
   handlePayment = () => {
     if (!this.props.islogin) {
@@ -380,12 +406,53 @@ class ContentCart extends Component {
                       <span>{this.state.notiDetailAddress}</span>
                     </li>
                   </ul>
+                  <Modal
+                    show={this.state.ispay}
+                    onHide={() => this.setState({ ispay: false })}
+                    container={this}
+                    aria-labelledby="contained-modal-title"
+                  >
+                    <Modal.Header closeButton>
+                      <Modal.Title id="contained-modal-title">
+                        Notification
+                      </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Payment successfully, please check mail to verify order</Modal.Body>
+                    <Modal.Footer>
+                      <Button onClick={() => this.setState({ ispay: false })}>
+                        <a>Cancel</a>
+                      </Button>
+                      <Button >
+                        <Link to="/login_register">Login</Link>
+                      </Button>
+                    </Modal.Footer>
+                  </Modal>
+                  
+                  <Modal
+                    show={this.state.showpaymentfail}
+                    onHide={() => this.setState({ showpaymentfail: false })}
+                    container={this}
+                    aria-labelledby="contained-modal-title"
+                  >
+                    <Modal.Header closeButton>
+                      <Modal.Title id="contained-modal-title">
+                        Notification
+                      </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Payment Fail</Modal.Body>
+                    <Modal.Footer>
+                      <Button onClick={() => this.setState({ showpaymentfail: false })}>
+                        <a>Cancel</a>
+                      </Button>
+                    </Modal.Footer>
+                  </Modal>
                   <a
                     className="btn btn-default update"
                     onClick={() => this.handlePayment()}
                   >
                     Payment
                   </a>
+                  
                 </div>
               </div>
             </div>

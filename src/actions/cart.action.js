@@ -111,6 +111,9 @@ export const paymentSuccess = () => ({
 export const paymentFail = () => ({
     type: cartTypes.PAYMENT_FAIL
 })
+export const resetPayment = () => ({
+    type: cartTypes.RESET_PAYMENT
+})
 export const payment = (city, district, ward, address, phone, name) => async (dispatch, getState) => {
     let res = null
     try {
@@ -128,8 +131,10 @@ export const payment = (city, district, ward, address, phone, name) => async (di
     catch(err) { 
         dispatch(paymentFail())
         console.log(err.response)
+        dispatch(resetPayment())
         return
     }
     dispatch(paymentSuccess())
+    dispatch(resetPayment())
     dispatch(getCart())
 }
