@@ -8,6 +8,7 @@ import ProductDetailContainer from './product.detail.container'
 import ProfileContainer from './profile.container'
 import CartContainer from './cart.container'
 import VerifyPaymentContainer from './verify.payment.container'
+import HistoryPurchase from './history.purchase.container'
 const App = () => (
   <Router>
     <Switch>
@@ -19,6 +20,7 @@ const App = () => (
       <Route exact path='/profile/:email' component={ProfileContainer} />
       <Route exact path='/cart' component={CartContainer} />
       <Route exact path='/payment/:token' component={VerifyPaymentContainer} />
+      <Route exact path='/purchase_history' component={HistoryPurchase} />
     </Switch>
   </Router>
 )

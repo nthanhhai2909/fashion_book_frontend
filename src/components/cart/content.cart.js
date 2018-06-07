@@ -155,24 +155,24 @@ class ContentCart extends Component {
     return (
       <div>
         <section id="cart_items">
-          <div class="container">
-            <div class="breadcrumbs">
-              <ol class="breadcrumb">
+          <div className="container">
+            <div className="breadcrumbs">
+              <ol className="breadcrumb">
                 <li>
                   <a href="#">Home</a>
                 </li>
-                <li class="active">Shopping Cart</li>
+                <li className="active">Shopping Cart</li>
               </ol>
             </div>
-            <div class="table-responsive cart_info">
-              <table class="table table-condensed">
+            <div className="table-responsive cart_info">
+              <table className="table table-condensed">
                 <thead>
-                  <tr class="cart_menu">
-                    <td class="image">Item</td>
-                    <td class="description" />
-                    <td class="price">Price</td>
-                    <td class="quantity">Quantity</td>
-                    <td class="total">Total</td>
+                  <tr className="cart_menu">
+                    <td className="image">Item</td>
+                    <td className="description" />
+                    <td className="price">Price</td>
+                    <td className="quantity">Quantity</td>
+                    <td className="total">Total</td>
                     <td />
                   </tr>
                 </thead>
@@ -180,24 +180,24 @@ class ContentCart extends Component {
                   {this.props.cart.map((element, index) => {
                     return (
                       <tr>
-                        <td class="cart_product">
+                        <td className="cart_product">
                           <a href="">
                             <img src={element.img} alt="" />
                           </a>
                         </td>
-                        <td class="cart_description">
+                        <td className="cart_description">
                           <h4>
                             <a href="">{element.name}</a>
                           </h4>
                           <p>Web ID: {element._id}</p>
                         </td>
-                        <td class="cart_price">
+                        <td className="cart_price">
                           <p>{element.price}</p>
                         </td>
-                        <td class="cart_quantity">
-                          <div class="cart_quantity_button">
+                        <td className="cart_quantity">
+                          <div className="cart_quantity_button">
                             <span
-                              class="cart_quantity_up"
+                              className="cart_quantity_up"
                               onClick={() => {
                                 element.count += 1;
                                 this.props.updateProductInCart(element);
@@ -207,7 +207,7 @@ class ContentCart extends Component {
                               +{" "}
                             </span>
                             <input
-                              class="cart_quantity_input"
+                              className="cart_quantity_input"
                               type="text"
                               name="quantity"
                               value={element.count}
@@ -215,7 +215,7 @@ class ContentCart extends Component {
                               size="2"
                             />
                             <span
-                              class="cart_quantity_down"
+                              className="cart_quantity_down"
                               onClick={() => {
                                 if (element.count === 1) {
                                   return;
@@ -229,19 +229,19 @@ class ContentCart extends Component {
                             </span>
                           </div>
                         </td>
-                        <td class="cart_total">
-                          <p class="cart_total_price">
+                        <td className="cart_total">
+                          <p className="cart_total_price">
                             {element.price * element.count}
                           </p>
                         </td>
-                        <td class="cart_delete">
+                        <td className="cart_delete">
                           <a
-                            class="cart_quantity_delete"
+                            className="cart_quantity_delete"
                             onClick={() =>
                               this.props.deteleProductInCart(element._id)
                             }
                           >
-                            <i class="fa fa-times" />
+                            <i className="fa fa-times" />
                           </a>
                         </td>
                       </tr>
