@@ -69,3 +69,7 @@ export const cartTypes = {
     PAYMENT_FAIL: 'PAYMENT_FAIL',
     RESET_PAYMENT: 'RESET_PAYMENT'
 }
+export const purchaseHistoryTypes = {
+    SET_PURCHASED_HISTORY: 'SET_PURCHASED_HISTORY',
+    
+}
