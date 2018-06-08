@@ -104,7 +104,7 @@ class ContentCart extends Component {
     }
     if (this.state.address === "") {
       this.setState({ notiDetailAddress: "Address invalid" });
-      check = true;
+      check = false;
     } else {
       this.setState({ notiDetailAddress: "" });
     }
