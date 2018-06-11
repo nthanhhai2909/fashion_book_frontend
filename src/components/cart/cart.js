@@ -35,7 +35,7 @@ class Cart extends Component {
           ward={this.props.ward}
           payment={(city, district, ward, address, phone, name) => 
             this.props.payment(city, district, ward, address, phone, name)}
-            ispay={this.props.ispay}
+          ispay={this.props.ispay}
         />
         <footer id="footer">
           <FooterTop />

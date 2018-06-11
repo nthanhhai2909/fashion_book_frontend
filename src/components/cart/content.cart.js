@@ -39,7 +39,7 @@ class ContentCart extends Component {
     }
     if(nextProps.ispay !== this.props.ispay && nextProps.ispay === true) {
       this.setState({ispay: true})
-      this.reset()
+      // this.reset()
     }
     if(nextProps.ispay !== this.props.ispay && nextProps.ispay === false) {
       this.setState({showpaymentfail: true})
@@ -419,11 +419,8 @@ class ContentCart extends Component {
                     </Modal.Header>
                     <Modal.Body>Payment successfully, please check mail to verify order</Modal.Body>
                     <Modal.Footer>
-                      <Button onClick={() => this.setState({ ispay: false })}>
-                        <a>Cancel</a>
-                      </Button>
-                      <Button >
-                        <Link to="/login_register">Login</Link>
+                      <Button onClick={() => this.reset()}>
+                        <a>OK</a>
                       </Button>
                     </Modal.Footer>
                   </Modal>
