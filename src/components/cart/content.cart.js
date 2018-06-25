@@ -39,7 +39,6 @@ class ContentCart extends Component {
     }
     if(nextProps.ispay !== this.props.ispay && nextProps.ispay === true) {
       this.setState({ispay: true})
-      // this.reset()
     }
     if(nextProps.ispay !== this.props.ispay && nextProps.ispay === false) {
       this.setState({showpaymentfail: true})
@@ -323,7 +322,7 @@ class ContentCart extends Component {
                     <li className="single_field">
                       <label>Province / city</label>
                       <select
-                        value={this.props.city.name}
+                        
                         onChange={e => this.handleSelectCity(e.target.value)}
                       >
                         <option
@@ -346,7 +345,7 @@ class ContentCart extends Component {
                     <li className="single_field">
                       <label>District</label>
                       <select
-                        value={this.state.district.name}
+                        
                         onChange={e =>
                           this.handleSelectDistrict(e.target.value)
                         }
@@ -371,7 +370,7 @@ class ContentCart extends Component {
                     <li className="single_field">
                       <label>Ward</label>
                       <select
-                        value={this.state.ward.name}
+                        
                         onChange={e => this.handleSelectWard(e.target.value)}
                       >
                         <option
