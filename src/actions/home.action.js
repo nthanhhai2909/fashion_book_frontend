@@ -3,7 +3,7 @@ import { homeTypes, sortTypes } from '../constants/action.types'
 export const getCategory = () => async (dispatch, getState) =>  {
     let res
     try {
-        res = await axios.get('http://localhost:8080/category/all')
+        res = await axios.get('http://localhost:8080/category/all/1')
     }
     catch (err) {
         return
@@ -14,7 +14,7 @@ export const getCategory = () => async (dispatch, getState) =>  {
 export const getPublisher = () => async (dispatch, getState) => {
     let res
     try {
-        res = await axios.get('http://localhost:8080/publisher/all')
+        res = await axios.get('http://localhost:8080/publisher/all/1')
     }
     catch (err) {
         return
@@ -25,7 +25,7 @@ export const getPublisher = () => async (dispatch, getState) => {
 export const getAuthor = () => async (dispatch, getState) => {
     let res
     try {
-        res = await axios.get('http://localhost:8080/author/all')
+        res = await axios.get('http://localhost:8080/author/all/1')
     }
     catch(err) {
         return
