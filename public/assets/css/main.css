@@ -861,6 +861,7 @@ h2.title {
 
 .single-products {
   position: relative;
+  min-height: 250px;
 }
 
 .new, .sale {
@@ -894,6 +895,7 @@ h2.title {
   max-height: 20px;
   overflow: hidden;
   color: #696763;
+  margin-bottom: 10px;
 }
 
 .productinfo img{
@@ -966,6 +968,8 @@ h2.title {
   font-family: 'Roboto', sans-serif;
   font-size: 15px;
   margin-bottom: 25px;
+  cursor: pointer;
+  min-height: 50px;
 }
 
 .add-to-cart:hover {

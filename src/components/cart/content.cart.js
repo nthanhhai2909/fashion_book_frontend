@@ -418,7 +418,8 @@ class ContentCart extends Component {
                     </Modal.Header>
                     <Modal.Body>Payment successfully, please check mail to verify order</Modal.Body>
                     <Modal.Footer>
-                      <Button onClick={() => this.reset()}>
+                      <Button onClick={() => {this.reset()
+                         window.location.reload()}}>
                         <a>OK</a>
                       </Button>
                     </Modal.Footer>
