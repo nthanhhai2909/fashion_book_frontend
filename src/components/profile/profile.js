@@ -11,7 +11,11 @@ class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      notiUpdateInfor: ""
+      notiUpdateInfor: "",
+      oldPassword: "",
+      newPassword: "",
+      confirm: "",
+      notiUpdatePassword: ''
     };
   }
   componentWillMount() {
@@ -25,12 +29,44 @@ class Profile extends Component {
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.isupdate === true) {
-      return this.setState({ notiUpdateInfor: "UPDATE SUCCESS" });
+       this.setState({ notiUpdateInfor: "UPDATE SUCCESS" });
     } else if (nextProps.isupdate === false) {
-      return this.setState({ notiUpdateInfor: "UPDATE FAIL" });
+       this.setState({ notiUpdateInfor: "UPDATE FAIL" });
     } else {
-      return this.setState({ notiUpdateInfor: "" });
+       this.setState({ notiUpdateInfor: "" });
     }
+    if(nextProps.notiupdatePassword !== this.props.notiupdatePassword && nextProps.notiupdatePassword === true) {
+      this.setState({
+        notiUpdatePassword: "Update password success"
+      })
+      this.setState({
+        oldPassword: '',
+        newPassword: '',
+        confirm: ''
+      })
+      this.props.resetUpdatePassword()
+    } 
+    if(nextProps.notiupdatePassword !== this.props.notiupdatePassword && nextProps.notiupdatePassword === false) {
+      this.setState({
+        notiUpdatePassword: "Update password fail"
+      })
+      this.props.resetUpdatePassword()
+    } 
+  }
+  handleUpdatePassword() {
+    if(this.state.newPassword.length < 6) {
+      this.setState({notiUpdatePassword: 'New Password invalid'})
+      return
+    } else {
+      this.setState({notiUpdatePassword: ''})
+    }
+    if(this.state.confirm.length < 6) {
+      this.setState({notiUpdatePassword: 'Confirm Password invalid'})
+      return
+    } else {
+      this.setState({notiUpdatePassword: ''})
+    }
+    this.props.updatePassword(this.state.oldPassword, this.state.newPassword)
   }
   render() {
     return (
@@ -48,10 +84,10 @@ class Profile extends Component {
             <div className="breadcrumbs">
               <ol className="breadcrumb">
                 <li>
-                  <Link to='/'>Home</Link>
+                  <Link to="/">Home</Link>
                 </li>
                 <li>
-                  <Link to='/purchase_history'>Purchase history</Link>
+                  <Link to="/purchase_history">Purchase history</Link>
                 </li>
               </ol>
             </div>
@@ -101,13 +137,34 @@ class Profile extends Component {
                 </div>
                 <div className="col-sm-4">
                   <div className="shopper-info">
+                  
                     <p>UPDATE PASSWORD</p>
-                    <input type="password" placeholder="Old password" />
-                    <input type="password" placeholder="New Password" />
-                    <input type="password" placeholder="Confirm" />
-                    <a className="btn btn-primary" href="">
-                      update
-                    </a>
+                    <p className="error">{this.state.notiUpdatePassword}</p>
+                    <input
+                    value={this.state.oldPassword}
+                      onChange={e =>
+                        this.setState({ oldPassword: e.target.value })
+                      }
+                      type="password"
+                      placeholder="Old password"
+                    />
+                    <input
+                    value={this.state.newPassword}
+                      onChange={e =>
+                        this.setState({ newPassword: e.target.value })
+                      }
+                      type="password"
+                      placeholder="New Password"
+                    />
+                    <input
+
+                    value={this.state.confirm}
+                      onChange={e => this.setState({ confirm: e.target.value })}
+                      type="password"
+                      placeholder="Confirm"
+                    />
+                    <a onClick={() => this.handleUpdatePassword()}
+                    className="btn btn-primary">update</a>
                   </div>
                 </div>
               </div>

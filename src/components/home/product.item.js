@@ -8,7 +8,7 @@ const ProductItem = ({urlImg, price, describe, id, book, addToCart }) => (
                 >
                     <Link to={'/product/' + id}><img src={urlImg} alt="" /></Link>
                     <Link to={'/product/' + id}><h2>{price}</h2></Link>
-                    <Link to={'/product/' + id}><h2>{book.name}</h2></Link>
+                    <Link to={'/product/' + id}><h5>{book.name}</h5></Link>
                     <p  onClick={() => {
                             book.count = 1
                             addToCart(book)
