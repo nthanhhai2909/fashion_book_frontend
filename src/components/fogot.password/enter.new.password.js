@@ -7,7 +7,9 @@ const EnterNewPassword = ({setNewPassword,setConfirm, submitEnterNewPassword  })
         </div>
         <div className="content-404 forgotpass">
             <h1><b>ENTER NEW PASSWORD
+            
 			</b></h1>
+            <p style={{color: "tomato"}}>Password must contain at least 6 characters</p>
             <input
                 type="password"
                 placeholder="New Password"
@@ -22,7 +24,7 @@ const EnterNewPassword = ({setNewPassword,setConfirm, submitEnterNewPassword  })
             <br />
             <button
                 className="btn btn-default"
-                onClick={() => submitEnterNewPassword()}
+                onClick={() => {submitEnterNewPassword()}}
             >
                 submit
 			</button>
