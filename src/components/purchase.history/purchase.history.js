@@ -44,7 +44,7 @@ class HistoryPurchase extends Component {
                   </td>
                   <td className="cart_description">
                     <h4>
-                      <a>{item.describe} </a>
+                      <a>{item.name} </a>
                     </h4>
                     <p>Web ID:{item._id}</p>
                   </td>
@@ -103,7 +103,7 @@ class HistoryPurchase extends Component {
                   </td>
                   <td className="cart_description">
                     <h4>
-                      <a>{item.describe} </a>
+                      <a>{item.name} </a>
                     </h4>
                     <p>Web ID:{item._id}</p>
                   </td>
