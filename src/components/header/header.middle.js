@@ -67,7 +67,7 @@ class HeaderMiddle extends Component {
           <div className="row">
             <div className="col-sm-4">
               <div className="logo pull-left">
-                <a href="index.html">
+                <a href="/">
                   <img src="/assets/images/home/logo.png" alt="" />
                 </a>
               </div>
