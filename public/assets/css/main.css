@@ -663,6 +663,8 @@ ul.sub-menu {
   margin-bottom: 35px;
   padding-bottom: 20px;
   padding-top: 15px;
+  max-height: 200px;
+  overflow-y: scroll;
 }
 .left-sidebar h2, .brands_products h2 {
   color: #FE980F;
@@ -769,6 +771,8 @@ h2.title:before{
   border: 1px solid #F7F7F0;
   padding-bottom: 20px;
   padding-top: 15px;
+  max-height: 200px;
+  overflow-y: scroll;
 }
 
 
@@ -780,6 +784,7 @@ h2.title:before{
   padding: 5px 25px;
   text-decoration: none;
   text-transform: uppercase;
+  
 }
 
 .brands-name .nav-stacked li a:hover{
